@@ -1,0 +1,40 @@
+#com_header_box {
+	color: white;
+	background-color: teal;
+	text-align: center;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.color_box_for_test {
+	color: mediumvioletred ;
+	background-color: black;
+	text-align: center;
+}
+
+
+.test_jump_button{
+	background-color: black;
+	color: tomato;
+	padding: 2px;
+}
+
+.test_jump_button:hover {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+#roster_a_bigbox{
+	float:left;
+}
+
+#roster_b_bigbox{
+	float:right;
+}
+
+

@@ -1,0 +1,144 @@
+<script src="assets/logic/omu.js" type="text/javascript"></script>
+
+    <div class="color_box_for_test">
+        <h2> CURRENT MATCHUP </h2>
+    </div>
+
+<div id="oer_bigbox">
+
+   <div id="roster_a_bigbox">
+   		<h1> {{ffname_a}} </h1>
+        <h3> active A </h3>
+        <div id="activeRoster_a">
+
+            <div id="activeQBSlot_a" class="active">
+      			<a id={{qb_a.id}} class="activeQB"> {{qb_a.name}} </a>
+            </div>
+
+            <div id="activeRB1Slot_a" class="active">
+                <a id={{rb1_a.id}} class="activeRB1"> {{rb1_a.name}} </a> 
+            </div>
+
+            <div id="activeRB2Slot_a" class="active">
+                <a id={{rb2_a.id}} class="activeRB2"> {{rb2_a.name}} </a>
+            </div>
+
+            <div id="activeFLEXSlot_a" class="active">
+                <a id={{flex_a.id}} class="activeFLEX"> {{flex_a.name}} </a>
+            </div>
+
+            <div id="activeWR1Slot_a" class="active">
+                <a id={{wr1_a.id}} class="activeWR1"> {{wr1_a.name}} </a>
+            </div>
+
+            <div id="activeWR2Slot_a" class="active">
+                <a id={{wr2_a.id}} class="activeWR2"> {{wr2_a.name}} </a>
+            </div>
+
+            <div id="activeTESlot_a" class="active">
+                <a id={{te_a.id}} class="activeTE"> {{te_a.name}} </a>
+            </div>
+
+            <div id="activeKSlot_a" class="active">
+                <a id={{k_a.id}} class="activeK"> {{k_a.name}} </a>
+            </div>
+
+            <div id="activeLBSlot_a" class="active">
+                <a id={{lb_a.id}} class="activeLB"> {{lb_a.name}} </a>
+            </div>
+
+            <div id="activeSSlot_a" class="active">
+                <a id={{s_a.id}} class="activeS"> {{s_a.name}} </a>
+            </div>
+
+            <div id="activeCSlot_a" class="active">
+                <a id={{c_a.id}} class="activeC"> {{c_a.name}} </a>
+            </div>
+
+            <div id="activeDLSlot_a" class="active">
+                <a id={{dl_a.id}} class="activeDL"> {{dl_a.name}} </a>
+            </div>
+        </div>
+
+        <h3>bench A</h3>
+        <div id="benchRoster_a">
+        	{{#each player_a}}
+            	<div id={{benchSlot}} class="bench">
+                	<a id={{id}} class={{class}}> {{name}} </a>
+            	</div>
+        	{{/each}}
+        </div>
+
+    </div>
+
+
+
+
+    
+    <div id="roster_b_bigbox">
+    	<h1> {{ffname_b}} </h1>
+        <h3> active B</h3>
+        <div id="activeRoster_b">
+
+            <div id="activeQBSlot_b" class="active">
+      			<a id={{qb_b.id}} class="activeQB"> {{qb_b.name}} </a>
+            </div>
+
+            <div id="activeRB1Slot_b" class="active">
+                <a id={{rb1_b.id}} class="activeRB1"> {{rb1_b.name}} </a> 
+            </div>
+
+            <div id="activeRB2Slot_b" class="active">
+                <a id={{rb2_b.id}} class="activeRB2"> {{rb2_b.name}} </a>
+            </div>
+
+            <div id="activeFLEXSlot_b" class="active">
+                <a id={{flex_b.id}} class="activeFLEX"> {{flex_b.name}} </a>
+            </div>
+
+            <div id="activeWR1Slot_b" class="active">
+                <a id={{wr1_b.id}} class="activeWR1"> {{wr1_b.name}} </a>
+            </div>
+
+            <div id="activeWR2Slot_b" class="active">
+                <a id={{wr2_b.id}} class="activeWR2"> {{wr2_b.name}} </a>
+            </div>
+
+            <div id="activeTESlot_b" class="active">
+                <a id={{te_b.id}} class="activeTE"> {{te_b.name}} </a>
+            </div>
+
+            <div id="activeKSlot_b" class="active">
+                <a id={{k_b.id}} class="activeK"> {{k_b.name}} </a>
+            </div>
+
+            <div id="activeLBSlot_b" class="active">
+                <a id={{lb_b.id}} class="activeLB"> {{lb_b.name}} </a>
+            </div>
+
+            <div id="activeSSlot_b" class="active">
+                <a id={{s_b.id}} class="activeS"> {{s_b.name}} </a>
+            </div>
+
+            <div id="activeCSlot_b" class="active">
+                <a id={{c_b.id}} class="activeC"> {{c_b.name}} </a>
+            </div>
+
+            <div id="activeDLSlot_b" class="active">
+                <a id={{dl_b.id}} class="activeDL"> {{dl_b.name}} </a>
+            </div>
+        </div>
+
+        <h3>bench B</h3>
+        <div id="benchRoster_b">
+        	{{#each player_b}}
+            	<div id={{benchSlot}} class="bench">
+                	<a id={{id}} class={{class}}> {{name}} </a>
+            	</div>
+        	{{/each}}
+        </div>
+
+    </div>
+	</div>
+
+</div>

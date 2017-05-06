@@ -1,0 +1,28 @@
+<script src="assets/logic/comu_logic.js" type="text/javascript"></script>
+
+<div id="comu_bigbox">
+	<div class="color_box_for_test">
+		<h2> UPDATE EXISTING PLAYER INFORMATION </h2>
+	</div>
+
+	<select id="comu_season">
+		{{#each season}}
+			<option value={{year}}>{{year}}</option>
+		{{/each}}
+	</select>
+
+	<select id="comu_week">
+		{{#each week}}
+			<option value={{val}}>week {{val}}</option>
+		{{/each}}
+	</select>
+
+
+	<select id="comu_player">
+		{{#each player}}
+			<option value={{id}}>{{name}}</option>
+		{{/each}}
+	</select>
+
+	<br>
+</div>

@@ -1,0 +1,21 @@
+<script src="assets/logic/oer.js" type="text/javascript"></script>
+
+    <div class="color_box_for_test">
+        <h2> WAIVER WIRE </h2>
+    </div>
+
+    <select id="sortby_team">
+    	<option value="all"> all </option>
+    	{{#each teams}}
+    		<option value={{cityname}}> {{teamname}} </option>
+    	{{/each}}
+    </select>
+
+    <select id="sortby_position">
+    	<option value="all"> all </option>
+    	{{#each position}}
+    		<option value={{name}}> {{name}} </option>
+    	{{/each}}
+    </select>
+
+    </div>
