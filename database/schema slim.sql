@@ -46,6 +46,8 @@ create table t_position ( -- static
 create table t_fantasy_team ( -- UG
 	id int not null auto_increment,
 		primary key (id),
+	fantasy_team_id int,
+		foreign key (fantasy_team_id) references t_fantasy_team (id),
 	description varchar (255) not null,
 	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
 	created_by varchar(50),
@@ -182,14 +184,10 @@ create table t_season_fantasy_team_stats ( -- automated
 create table t_commissioner ( -- automated
 	id int not null auto_increment,
 		primary key (id),
-	season_id int,
-		foreign key (season_id) references t_season (id),
-	fantasy_team_id int,
-		foreign key (fantasy_team_id) references t_fantasy_team (id),
-	fantasy_score int,-- aggregate of active player fantasy score week over week
-	win_ct int,
-	loss_ct int,
-	tie_ct int,
+	description varchar(255),
+	league_name varchar(255),
+	username varchar (255) not null,
+	`password` varchar (255) not null,
 	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
 	created_by varchar(50),
 	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
