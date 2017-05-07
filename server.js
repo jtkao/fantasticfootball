@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 app.use(com_routes);
-app.use(o_routes);
+require('./o_routes.js')(app)
 
 db.sequelize.sync({ force: true }).then(function() {
  app.listen(PORT, function() {

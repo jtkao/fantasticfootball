@@ -1,98 +1,79 @@
-// THIS WILL BE BROKEN UP INTO CONTROLLERS
-var roster = require("./public/assets/logic/data.js")
-var rosterb = require("./public/assets/logic/dummyRoster2.js")
-var nflteams = require("./public/assets/logic/nflteam_data.js")
-var positions = require("./public/assets/logic/position_data.js")
+var active = require("./public/assets/logic/data.js")
+var bench = require("./public/assets/logic/dummyBenchOnly.js")
 
-var express = require("express");
-var router = express.Router();
+var prepareBenchHtml = function(list) {
+    var data = [];
 
-/// **********************************************************************************OWNER
+    for (var i = 0; i < list.length; i++) {
+        var player = {};
+        player.name = list[i].name;
+        player.id = list[i].id;
+        player.benchSlot = "bench" + (i + 1) + "Slot";
+        player.class = "bench" + (i + 1);
+        player.buttonID = "swap" + (i + 1);
+        player.selectionButtonID = "selectToSwitch" + (i + 1);
+        data.push(player);
+    }
 
-var benchData = function(list){
-	var data = [];
+    return data;
+};
 
-	for (var i = 0; i < list.length; i++){
-		var player = {};
-		player.name = list[i].name;
-		player.id = list[i].id;
-		player.benchSlot = "bench" + (i + 1) + "Slot";
-		player.class = "bench" + (i + 1);
-		player.buttonID = "swap" + (i + 1);
-		player.selectionButtonID = "selectToSwitch" + (i + 1);
-		data.push(player);
-	}
+module.exports = function(app) {
+    app.get('/oer', function(req, res) {
+        var benchPlayers = prepareBenchHtml(bench);
 
-	return data;
+        var hdbData = {
+            qb: active[0],
+            rb1: active[1],
+            rb2: active[2],
+            flex: active[3],
+            wr1: active[4],
+            wr2: active[5],
+            te: active[6],
+            k: active[7],
+            lb: active[8],
+            s: active[9],
+            c: active[10],
+            dl: active[11],
+            player: benchPlayers
+        };
+
+        res.render("oer", hdbData);
+    });
+
+    app.get('/omu', function(req, res){
+    	var benchPlayersTeamA = prepareBenchHtml(bench);
+    	var benchPlayersTeamB = prepareBenchHtml(bench);
+
+    	 var hdbData = {
+            qb_a: active[0],
+            rb1_a: active[1],
+            rb2_a: active[2],
+            flex_a: active[3],
+            wr1_a: active[4],
+            wr2_a: active[5],
+            te_a: active[6],
+            k_a: active[7],
+            lb_a: active[8],
+            s_a: active[9],
+            c_a: active[10],
+            dl_a: active[11],
+            bench_player_a: benchPlayersTeamA,
+            qb_b: active[0],
+            rb1_b: active[1],
+            rb2_b: active[2],
+            flex_b: active[3],
+            wr1_b: active[4],
+            wr2_b: active[5],
+            te_b: active[6],
+            k_b: active[7],
+            lb_b: active[8],
+            s_b: active[9],
+            c_b: active[10],
+            dl_b: active[11],
+            bench_player_b: benchPlayersTeamB
+        };
+
+        res.render("omu", hdbData);
+    })
 }
-
-router.get("/oer", function(err,res){
-	var test = roster.splice(12)
-	var benchPlayers = benchData(test);
-	console.log(benchPlayers)
-
-	var hb_data = {
-			qb:roster[0], 
-			rb1:roster[1],
-			rb2:roster[2],
-			flex:roster[3],
-			wr1:roster[4],
-			wr2:roster[5],
-			te:roster[6],
-			k: roster[7],
-			lb: roster[8],
-			s: roster[9],
-			c: roster[10],
-			dl: roster[11],
-			player:benchPlayers
-		}
-
-	res.render("oer", hb_data);
-});
-
-router.get("/omu", function(err,res){
-	var test = roster.splice(12)
-	var testb = rosterb.splice(12)
-	var benchPlayers = benchData(test);
-
-	var hb_data = {
-			// team a
-			ffname_a: "MAGIC CITY WIZARDS",
-			qb_a:roster[0], 
-			rb1_a:roster[1],
-			rb2_a:roster[2],
-			flex_a:roster[3],
-			wr1_a:roster[4],
-			wr2_a:roster[5],
-			te_a:roster[6],
-			k_a: roster[7],
-			lb_a: roster[8],
-			s_a: roster[9],
-			c_a: roster[10],
-			dl_a: roster[11],
-			player_a:benchPlayers,
-			
-			// team b
-			ffname_b: "NON MAGICAL JAVASCRIPT WIZARDS",
-			qb_b:rosterb[0], 
-			rb1_b:rosterb[1],
-			rb2_b:rosterb[2],
-			flex_b:rosterb[3],
-			wr1_b:rosterb[4],
-			wr2_b:rosterb[5],
-			te_b:rosterb[6],
-			k_b: rosterb[7],
-			lb_b: rosterb[8],
-			s_b: rosterb[9],
-			c_b: rosterb[10],
-			dl_b: rosterb[11],
-			player_b:benchPlayers
-		}
-	res.render("omu", hb_data)
-});
-
-router.get("/oww", function(err,res){
-	res.render("oww", {teams:nflteams, position:positions})
-});
-
-module.exports = router;

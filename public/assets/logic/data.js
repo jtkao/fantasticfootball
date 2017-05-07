@@ -10,19 +10,7 @@ var roster = [
 	{"name":"Luke Kuechly", "id":55, "position": "LB",  "active":"LB"},
 	{"name":"Earl Thomas", "id":29, "position": "S",  "active":"S"},
 	{"name":"Jason Verrett", "id":22, "position": "C",  "active":"C"},
-	{"name":"Ndamukong Suh", "id":99, "position": "DL",  "active":"DL"},
-	{"name":"Phillip Rivers", "id":17, "position": "QB",  "active":"BENCH"},
-	{"name":"Jermain Gresham", "id":85, "position": "TE",  "active":"BENCH"},
-	{"name":"Cam Newton", "id":1, "position": "QB",  "active":"BENCH"},
-	{"name":"Ladanian Tomlinson", "id":21, "position": "RB",  "active":"BENCH"},
-	{"name":"DUMMY QB", "id":111, "position": "QB",  "active":"BENCH"},
-	{"name":"DUMMY WR", "id":222, "position": "WR",  "active":"BENCH"},
-	{"name":"DUMMY TE", "id":333, "position": "TE",  "active":"BENCH"},
-	{"name":"DUMMY RB", "id":444, "position": "RB",  "active":"BENCH"},
-	{"name":"DUMMY S", "id":555, "position": "S",  "active":"BENCH"},
-	{"name":"DUMMY LB", "id":666, "position": "LB",  "active":"BENCH"},
-	{"name":"DUMMY DL", "id":777, "position": "DL",  "active":"BENCH"},
-	{"name":"DUMMY K", "id":888, "position": "K",  "active":"BENCH"}
+	{"name":"Ndamukong Suh", "id":99, "position": "DL",  "active":"DL"}
 ];
 
 module.exports = roster;
