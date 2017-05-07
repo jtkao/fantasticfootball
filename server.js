@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
+var db = require('./models')
 
 var com_routes = require("./com_routes.js")
 var o_routes = require("./o_routes.js")
@@ -20,6 +21,9 @@ app.use(methodOverride("_method"));
 app.use(com_routes);
 require('./o_routes.js')(app)
 
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync({ force: true }).then(function() {
+ app.listen(PORT, function() {
+   console.log("App listening on PORT " + PORT);
+ });
 });
+
