@@ -107,3 +107,19 @@ select
     current_user()
 from ff_starter_data.t_game_schedule;
 
+delete from t_player;
+
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("mike","jones","safety","lions",34);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("john","johnson","quarterback","cowboys",65);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("steve","jirjis","kicker","giants",23);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("josh","khao","linebacker","jets",5);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("joe","mama","running_back","broncos",13);
+
+delete from t_fantasy_team;
+
+insert into t_fantasy_team (description) values ("steven fantasy team");
+insert into t_fantasy_team (description) values ("josh fantasy team");
+insert into t_fantasy_team (description) values ("purple fantasy team");
+insert into t_fantasy_team (description) values ("ft winner fantasy team");
+insert into t_fantasy_team (description) values ("nfl beast fantasy team");
+

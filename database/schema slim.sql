@@ -46,8 +46,6 @@ create table t_position ( -- static
 create table t_fantasy_team ( -- UG
 	id int not null auto_increment,
 		primary key (id),
-	fantasy_team_id int,
-		foreign key (fantasy_team_id) references t_fantasy_team (id),
 	description varchar (255) not null,
 	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
 	created_by varchar(50),

@@ -1,4 +1,5 @@
-var roster = require("./data.js")
+var roster = require("./data.js");
+var fantasyTeamRoster = require('./fantasyTeamRoster');
 
 // owner model
 // will require ORM
@@ -8,6 +9,12 @@ var owner = {
 	// MAX ROSTER SIZE IS 19
 	checkRosterSize: function(fantasyTeamID){
 		// query the fantasy roster for single User, return size of roster
+
+		fantasyTeamRoster.count({
+			where: ['id = ?', fantasyTeamID]
+		}).then(function(count){
+			console.log(count);
+		});
 
 		// *** this will be used primarily as a conditional in the below addFromWaiver
 		// *** to make sure the fantasy roster has space to support another player
