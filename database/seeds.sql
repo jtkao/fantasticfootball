@@ -109,11 +109,11 @@ from ff_starter_data.t_game_schedule;
 
 delete from t_player;
 
-insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("mike","jones","safety","lions",34);
-insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("john","johnson","quarterback","cowboys",65);
-insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("steve","jirjis","kicker","giants",23);
-insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("josh","khao","linebacker","jets",5);
-insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("joe","mama","running_back","broncos",13);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("mike","jones",1,"lions",34);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("john","johnson",2,"cowboys",65);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("steve","jirjis",3,"giants",23);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("josh","khao",4,"jets",5);
+insert into t_player(fname,lname,position,nfl_team,jersey_number) values ("joe","mama",5,"broncos",13);
 
 delete from t_fantasy_team;
 
