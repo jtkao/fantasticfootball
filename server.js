@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 app.use(com_routes);
-app.use(o_routes);
+require('./o_routes.js')(app)
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);

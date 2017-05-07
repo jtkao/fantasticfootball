@@ -1,11 +1,3 @@
-function getSlotPosition(positionSlot){
-    var first = positionSlot.slice(6)
-    var second = first.substring(0,(first.length-4));
-    console.log(second);
-};
-
-
-
 $(document).ready(function() {
     var moveFromBench = $(".selectToSwitch");
     var moveFromActive = $(".selectToSwap");
