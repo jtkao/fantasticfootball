@@ -21,14 +21,8 @@ app.use(com_routes);
 require('./owner_html_routes.js')(app)
 
 db.sequelize.sync({ force: true }).then(function() {
-<<<<<<< HEAD
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
-=======
-  app.listen(PORT, function() {
-    console.log("App listening on PORT " + PORT);
-  });
->>>>>>> b5df7c3dee0e8a6c9d5a6ca9add3d6dcec6d289c
 });
 
