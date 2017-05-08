@@ -27,6 +27,7 @@ $(document).ready(function() {
 
         var ppr = $("#comse_ppr").val();
         var kicks = $("#comse_fg").val();
+        var tpc = $("#comse_tpc").val();
 
         var off_fumble = $("#comse_off_fumble").val();
         var off_int = $("#comse_off_int").val();
@@ -48,6 +49,7 @@ $(document).ready(function() {
         	"rec_yd": rec_yd, 
         	"ppr": ppr, 
         	"kicks": kicks, 
+            "tpc": tpc,
         	"off_fumble": off_fumble, 
         	"off_int": off_int, 
         	"tackles": tackles, 

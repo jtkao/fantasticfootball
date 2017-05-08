@@ -80,7 +80,7 @@ module.exports = function(app) {
         res.render("omu", hdbData);
     });
 
-    router.get("/oww", function(err,res){
+    app.get("/oww", function(err,res){
         res.render("oww", {teams:nflteams, position:positions})
     });
 }

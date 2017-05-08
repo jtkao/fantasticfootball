@@ -20,6 +20,9 @@ app.use(methodOverride("_method"));
 app.use(com_routes);
 require('./owner_html_routes.js')(app)
 
- app.listen(PORT, function() {
-   console.log("App listening on PORT " + PORT);
- });
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
+
