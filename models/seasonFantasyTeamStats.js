@@ -1,22 +1,25 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+//var Sequelize = require("sequelize");
 var season = require("./season.js");
 var fantasyTeam = require("./fantasyTeam.js");
 
-var seasonFantasyTeamStats = sequelize.define('t_season_fantasy_team_stats', {
-	season_id: Sequelize.INTEGER,
-		// foreign key (season_id) references t_season (id),
-	fantasy_team_id: Sequelize.INTEGER,
-		// foreign key (fantasy_team_id) references t_fantasy_team (id),
-	fantasy_score: Sequelize.INTEGER, // aggregate of active player fantasy score week over week
-	win_ct: Sequelize.INTEGER,
-	loss_ct: Sequelize.INTEGER,
-	tie_ct: Sequelize.INTEGER
-});
+module.exports = function(sequelize, DataTypes) {
 
-seasonFantasyTeamStats.season_id.belongsTo(season);
-seasonFantasyTeamStats.fantasy_team_id.belongsToMany(fantasyTeam);
+    var seasonFantasyTeamStats = sequelize.define('t_season_fantasy_team_stats', {
+        season_id: DataTypes.INTEGER,
+        fantasy_team_id: DataTypes.INTEGER,
+        fantasy_score: DataTypes.INTEGER, // aggregate of active player fantasy score week over week
+        win_ct: DataTypes.INTEGER,
+        loss_ct: DataTypes.INTEGER,
+        tie_ct: DataTypes.INTEGER
+    // }, {
+    //     tableName: 'fantasyTeam',
+    //     classMethods: {
+    //         associate: function(models) {
+    //             seasonFantasyTeamStats.season_id.belongsTo(season),
+    //                 seasonFantasyTeamStats.fantasy_team_id.belongsToMany(fantasyTeam)
+    //         }
+    //     }
+    });
 
-seasonFantasyTeamStats.sync();
-
-module.exports = seasonFantasyTeamStats;
+    return seasonFantasyTeamStats;
+};

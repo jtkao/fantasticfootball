@@ -1,4 +1,4 @@
-var roster = require("./data.js");
+//var roster = require("./data.js");
 var fantasyTeamRoster = require('./fantasyTeamRoster');
 
 // owner model
@@ -34,7 +34,7 @@ var owner = {
                         player_id: playerID
                     }
                 }
-            });
+            )
     },
 
 
@@ -96,4 +96,4 @@ var owner = {
 
 };
 
-console.log(roster)
+//console.log(roster);

@@ -1,21 +1,13 @@
-  // set up
-var mysql = require("mysql");
+var Sequelize = require("sequelize");
 
-var connection = mysql.createConnection({
-  port: 3306,   
+var sequelize = new Sequelize("fantasy_football", "root", "root", {
   host: "localhost",
-  user: "root",
-  password: "sdfccsdfcc",
-  database: "fantasy_football"
-});
-
-// connect
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
   }
-  console.log("connected as id " + connection.threadId);
 });
 
-module.exports = connection;
+module.exports = sequelize;
