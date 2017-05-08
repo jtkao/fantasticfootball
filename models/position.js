@@ -1,10 +1,9 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+//var Sequelize = require("sequelize");
+
+module.exports = function(sequelize, DataTypes){
 
 var position = sequelize.define('t_position', {
-	description: Sequelize.STRING
+	description: DataTypes.STRING
 });
-
-position.sync();
-
-module.exports = position;
+	return position;
+};

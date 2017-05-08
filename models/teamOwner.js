@@ -1,12 +1,11 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+//var Sequelize = require("sequelize");
 
-var teamOwner = sequelize.define('t_team_owner', {
-    description: Sequelize.STRING,
-    username: Sequelize.STRING,
-    password: Sequelize.STRING
+module.exports = function(sequelize, DataTypes){
+
+	var teamOwner = sequelize.define('t_team_owner', {
+    description: DataTypes.STRING,
+    username: DataTypes.STRING,
+    password: DataTypes.STRING
 });
-
-teamOwner.sync();
-
-module.exports = teamOwner;
+	return teamOwner;
+};

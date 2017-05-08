@@ -1,13 +1,12 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+//var Sequelize = require("sequelize");
 
-var commissioner = sequelize.define('t_commissioner', {
-	description: Sequelize.STRING,
-	league_name: Sequelize.STRING,
-	username: Sequelize.STRING,
-	password: Sequelize.STRING
-});
+module.exports = function(sequelize, DataTypes) {
+    var commissioner = sequelize.define("t_commissioner", {
+        description: DataTypes.STRING,
+        league_name: DataTypes.STRING,
+        username: DataTypes.STRING,
+        password: DataTypes.STRING
+    });
 
-commissioner.sync();
-
-module.exports = commissioner;
+    return commissioner;
+};

@@ -1,20 +1,24 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+//var Sequelize = require("sequelize");
 var gameStats = require("./gameStats.js");
 var fantasyTeamRoster = require("./fantasyTeamRoster.js");
 var fantasyTeamStats = require("./fantasyTeamStats.js");
 
-var player = sequelize.define('t_player', {
-    fname: Sequelize.STRING,
-    lname: Sequelize.STRING,
-    position: Sequelize.STRING,
-    nfl_team: Sequelize.STRING,
-    jersey_number: Sequelize.INTEGER
-});
+module.exports = function(sequelize, DataTypes) {
+	var player = sequelize.define('t_player', {
+	    fname: DataTypes.STRING,
+	    lname: DataTypes.STRING,
+	    position: DataTypes.STRING,
+	    nfl_team: DataTypes.STRING,
+	    jersey_number: DataTypes.INTEGER
+	// }, {
+ //        tableName: 'fantasyTeam',
+ //        classMethods: {
+ //            associate: function(models) {
+	// 			player.belongsToMany(gameStats)
+	// 			player.belongsToMany(fantasyTeamRoster)
+ //            }
+ //        }
+    });
 
-player.belongsToMany(gameStats);
-player.belongsToMany(fantasyTeamRoster);
-
-player.sync();
-
-module.exports = player;
+	return player;
+};
