@@ -1,5 +1,8 @@
-var active = require("./public/assets/logic/data.js")
-var bench = require("./public/assets/logic/dummyBenchOnly.js")
+var active = require("./public/assets/logic/data.js");
+var bench = require("./public/assets/logic/dummyBenchOnly.js");
+var nflteams = require("./public/assets/logic/nflteam_data.js");
+var positions = require("./public/assets/logic/position_data.js");
+
 
 var prepareBenchHtml = function(list) {
     var data = [];
@@ -75,5 +78,9 @@ module.exports = function(app) {
         };
 
         res.render("omu", hdbData);
-    })
+    });
+
+    app.get("/oww", function(err,res){
+        res.render("oww", {teams:nflteams, position:positions})
+    });
 }

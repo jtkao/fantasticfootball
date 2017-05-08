@@ -5,7 +5,6 @@ var exphbs = require("express-handlebars");
 var db = require('./models/index.js')
 
 var com_routes = require("./com_routes.js")
-var o_routes = require("./o_routes.js")
 
 const PORT = process.env.PORT || 4200;
 
@@ -19,10 +18,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 app.use(com_routes);
-require('./o_routes.js')(app)
+require('./owner_html_routes.js')(app)
 
 db.sequelize.sync({ force: true }).then(function() {
+<<<<<<< HEAD
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
     });
+=======
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+>>>>>>> b5df7c3dee0e8a6c9d5a6ca9add3d6dcec6d289c
 });
+
