@@ -1,16 +1,34 @@
 $(document).ready(function(){
 
+	$("#submit_sort").on("click", function(){
+		var sortTeam = $("#sortby_team").val();
+		var sortPosition = $("#sortby_position").val();
+		var sortOrder = $("#sortby_position").val();
+
+		var sorted = {
+			"team":sortTeam,
+			"position":sortPosition,
+			"order":sortOrder
+		};
+
+		$.post("/oww", sorted);
+	});
+
 	$(".showSeasonStats").on("click", function(){
 		var playerId = this.id;
 
-		console.log("show season stats for pid#", playerId)
-		// send get request for season data
-		// load in modal
+		var url = "/api/" + playerId;
+		console.log(playerId,url)
+
+		$.post(url);
 	});
 
 	$(".addMe").on("click", function(){
 		var playerId = this.id;
-		
-		console.log("add", this.id);
+
+		var url = "/api/add/" + playerId;
+		console.log(playerId,url)
+
+		$.post(url);
 	})
 })

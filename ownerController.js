@@ -1,8 +1,6 @@
 // dummy data
 var rawActive = require("./public/assets/logic/data.js");
 var bench = require("./public/assets/logic/dummyBenchOnly.js");
-var nflteams = require("./public/assets/logic/nflteam_data.js");
-var positions = require("./public/assets/logic/position_data.js");
 var dummyRosterTwo = require("./public/assets/logic/dummyRoster2.js");
 
 // actually need these 
@@ -12,6 +10,8 @@ var prepareBenchHtml = require("./public/assets/logic/prepareBenchHtml.js");
 
 
 module.exports = function(app) {
+
+    // switch active and bench players on roster
     app.get('/oer', function(req, res) {
         var benchPlayers = prepareBenchHtml(bench);
         var activePlayer = loadActive(rawActive);
@@ -23,6 +23,7 @@ module.exports = function(app) {
         res.render("oer", hdbData);
     });
 
+    // load matchups
     app.get('/omu', function(req, res){
     	var benchPlayersTeamA = prepareBenchHtml(bench);
     	var benchPlayersTeamB = prepareBenchHtml(bench);
@@ -39,9 +40,30 @@ module.exports = function(app) {
         res.render("omu", hdbData);
     });
 
+    // populate waivers
     app.get("/oww", function(req,res){
-        res.render("oww", {teams:nflteams, position:positions, available:rawActive})
+        // will need data for all available players
+        res.render("oww", {available:rawActive})
     });
+
+    // 
+    app.post("/oww", function(req,res){
+        console.log(req.body);
+        res.end();
+    })
+
+    app.post("/api/:id", function(req,res){
+        // modal of player season stats
+        var playerId = req.params.id;
+        console.log(playerId);
+        res.end();
+    })
+
+    app.post("/api/add/:id", function(req, res) {
+        var playerId = req.params.id;
+        console.log(playerId);
+        res.end();
+    })
 
     app.put("/oer", function(req,res){
         console.log(req.body);

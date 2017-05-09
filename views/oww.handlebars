@@ -6,32 +6,68 @@
 
     <div id="sortby_bigbox">
         <select id="sortby_team">
-        	<option value="all"> all </option>
-        	{{#each teams}}
-        		<option value={{cityname}}> {{teamname}} </option>
-        	{{/each}}
+        	<option value="ALL"> all </option>
+        		<option value="Bills"> Bills </option>
+                <option value="Dolphins"> Dolphins </option>
+                <option value="Patriots"> Patriots </option>
+                <option value="Jets"> Jets </option>
+                <option value="Ravens"> Ravens </option>
+                <option value="Bengals"> Bengals </option>
+                <option value="Browns"> Browns </option>
+                <option value="Steelers"> Steelers </option>
+                <option value="Texans"> Texans </option>
+                <option value="Colts"> Colts </option>
+                <option value="Jaguars"> Jaguars </option>
+                <option value="Titans"> Titans </option>
+                <option value="Broncos"> Broncos </option>
+                <option value="Chiefs"> Chiefs </option>
+                <option value="Raiders"> Raiders </option>
+                <option value="Chargers"> Chargers </option>
+                <option value="Cowboys"> Cowboys </option>
+                <option value="Giants"> Giants </option>
+                <option value="Eagles"> Eagles </option>
+                <option value="Redskins"> Redskins </option>
+                <option value="Bears"> Bears </option>
+                <option value="Lions"> Lions </option>
+                <option value="Packers"> Packers </option>
+                <option value="Vikings"> Vikings </option>
+                <option value="Falcons"> Falcons </option>
+                <option value="Panthers"> Panthers </option>
+                <option value="Saints"> Saints </option>
+                <option value="Buccaneers"> Buccaneers </option>
+                <option value="Cardinals"> Cardinals </option>
+                <option value="Rams"> Rams </option>
+                <option value="49ers"> 49ers </option>
+                <option value="Seahawks"> Seahawks </option>
         </select>
 
         <select id="sortby_position">
-        	<option value="all"> all </option>
-        	{{#each position}}
-        		<option value={{name}}> {{name}} </option>
-        	{{/each}}
+        	<option value="ALL"> all </option>
+            <option value="QB"> QB </option>
+            <option value="RB"> RB </option>
+            <option value="WR"> WR </option>
+            <option value="TE"> TE </option>
+            <option value="K"> K </option>
+            <option value="LB"> LB </option>
+            <option value="S"> S </option>
+            <option value="C"> C </option>
+            <option value="DL"> DL </option>
         </select>
 
         <select id="sortby_order">
                 <option value="alphabetical"> alphabetical </option>
                 <option value="ranking"> ranking </option>
         </select>
+
+        <button id="submit_sort">sort</button>
     </div>
 
     <div id="waiver_bigbox">
         <h2> Available Players </h2>
 
         {{#each available}}
-            <li id={{id}} class="showSeasonStats">{{name}}
-            <button id={{id}} class="addMe">add</button>
-            </li>
+            <a id={{id}} class="showSeasonStats">{{name}}</a>
+            <button id={{id}} class="addMe">add</button><br>
         {{/each}}
     </div>
 
