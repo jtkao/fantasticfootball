@@ -11,14 +11,16 @@ module.exports = function(sequelize, DataTypes) {
         fantasy_team_id: DataTypes.INTEGER,
         active: DataTypes.STRING,
         join_dt: DataTypes.DATE,
-        left_dt: DataTypes.DATE,
+        left_dt: DataTypes.DATE
     // }, {
-    //     tableName: 'fantasyTeamRoster',
+    //     // tableName: 'fantasyTeamRoster',
     //     classMethods: {
     //         associate: function(models) {
-    //             fantasyTeamRoster.season_id.belongsTo(season),
-    //             fantasyTeamRoster.player_id.belongsToMany(player),
-    //             fantasyTeamRoster.fantasy_team_id.belongsToMany(fantasyTeam)
+    //             //fantasyTeamRoster.season_id.belongsTo(models.t_season),
+    //             fantasyTeamRoster.belongsTo(models.t_player, {
+    //                 foreignKey: 'player_id'
+    //             })
+    //             //fantasyTeamRoster.fantasy_team_id.belongsToMany(fantasyTeam)
     //         }
     //     }
     });

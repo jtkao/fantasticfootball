@@ -11,11 +11,13 @@ module.exports = function(sequelize, DataTypes) {
 	    nfl_team: DataTypes.STRING,
 	    jersey_number: DataTypes.INTEGER
 	// }, {
- //        tableName: 'fantasyTeam',
+ //        // tableName: 'fantasyTeam',
  //        classMethods: {
  //            associate: function(models) {
-	// 			player.belongsToMany(gameStats)
-	// 			player.belongsToMany(fantasyTeamRoster)
+	// 			//player.belongsToMany(gameStats)
+	// 			player.hasMany(models.tx_fantasy_team_roster, {
+	// 				foreignKey: 'player_id'
+	// 			})
  //            }
  //        }
     });

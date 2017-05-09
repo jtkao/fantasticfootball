@@ -1,4 +1,3 @@
-//var Sequelize = require("sequelize");
 var gameStats = require("./gameStats.js");
 
 module.exports = function(sequelize, DataTypes) {
@@ -10,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     //     tableName: 'fantasyTeam',
     //     classMethods: {
     //         associate: function(models) {
-    //             nflTeam.belongsToMany(gameStats);
+    //             nflTeam.hasMany(gameStats.player_id);
     //         }
     //     }
     });

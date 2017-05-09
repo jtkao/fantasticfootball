@@ -99,6 +99,56 @@ insert into t_fantasy_teams (description, createdAt, updatedAt) values ("purple 
 insert into t_fantasy_teams (description, createdAt, updatedAt) values ("ft winner fantasy team",now(),now());
 insert into t_fantasy_teams (description, createdAt, updatedAt) values ("nfl beast fantasy team",now(),now());
 
+delete from tx_fantasy_team_rosters;
+
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,1,1,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,2,1,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,3,1,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,4,null,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,5,null,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,6,1,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,7,1,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,8,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,9,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,10,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,11,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,12,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,13,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,14,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,15,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,16,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, fantasy_team_id, createdAt, updatedAt) values(1,1,17,2,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, createdAt, updatedAt) values(1,1,18,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, createdAt, updatedAt) values(1,1,19,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, createdAt, updatedAt) values(1,1,20,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, createdAt, updatedAt) values(1,1,21,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, createdAt, updatedAt) values(1,1,22,now(),now());
+insert into tx_fantasy_team_rosters (season_id, week_id, player_id, createdAt, updatedAt) values(1,1,23,now(),now());
+
+delete from t_game_stats;
+
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,1,1,12,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,1,1,34,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,1,1,32,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,1,1,45,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,2,1,6,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,2,1,4,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,2,1,32,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,3,2,67,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,3,2,65,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,3,2,34,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,1,3,2,56,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,1,1,87,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,1,1,5,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,1,1,69,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,1,1,87,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,2,1,2,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,2,1,54,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,2,1,7,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,3,2,24,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,3,2,65,now(),now());
+insert into t_game_stats (season_id, week_id, player_id, fantasy_team_id,  players_game_fantasy_score, createdAt, updatedAt) values (1,2,3,2,97,now(),now());
+
 delete from t_game_schedules;
 
 insert into t_game_schedules (week_id,game_type,home_team,away_team, createdAt, updatedAt)values (1,"NFL",1,17,now(),now());

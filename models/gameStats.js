@@ -34,7 +34,7 @@ module.exports = function(sequelize, DataTypes) {
     //             gameStats.season_id.belongsTo(season),
     //             gameStats.player_id.belongsToMany(player),
     //             gameStats.fantasy_team_id.belongsToMany(fantasyTeam),
-    //             gameStats.opposing_nfl_team.belongsToMany(nflTeam)
+    //            gameStats.opposing_nfl_team.belongsToMany(nflTeam)
     //         }
     //     }
     });
