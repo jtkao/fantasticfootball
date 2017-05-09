@@ -21,7 +21,7 @@
             </div>
 
             <div id="activeRB1Slot" class="active">
-                <a id={{rb1.id}} class="activeRB1"> {{rb1.name}}
+                <a id={{rb1.id}} class="activeRB1" data-position={{rb1.position}}> {{rb1.name}}
                     <button id="moveRB1" class="moveToBench">move to bench</button>
                     <button id="selectToSwapRB1" class="selectToSwap"> selection </button>  
                 </a> 
@@ -29,7 +29,7 @@
             </div>
 
             <div id="activeRB2Slot" class="active">
-                <a id={{rb2.id}} class="activeRB2"> {{rb2.name}}
+                <a id={{rb2.id}} class="activeRB2" data-position={{rb2.position}}> {{rb2.name}}
                     <button id="moveRB2" class="moveToBench">move to bench</button>
                     <button id="selectToSwapRB2" class="selectToSwap"> selection </button>  
                 </a>
@@ -37,7 +37,7 @@
             </div>
 
             <div id="activeFLEXSlot" class="active">
-                <a id={{flex.id}} class="activeFLEX"> {{flex.name}}
+                <a id={{flex.id}} class="activeFLEX" data-position={{flex.position}}> {{flex.name}}
                     <button id="moveFLEX" class="moveToBench">move to bench</button>
                     <button id="selectToSwapFLEX" class="selectToSwap"> selection </button>  
                 </a>
@@ -45,7 +45,7 @@
             </div>
 
             <div id="activeWR1Slot" class="active">
-                <a id={{wr1.id}} class="activeWR1"> {{wr1.name}}
+                <a id={{wr1.id}} class="activeWR1" data-position={{wr1.position}}> {{wr1.name}}
                     <button id="moveWR1" class="moveToBench">move to bench</button>
                     <button id="selectToSwapWR1" class="selectToSwap"> selection </button>  
                 </a>
@@ -53,7 +53,7 @@
             </div>
 
             <div id="activeWR2Slot" class="active">
-                <a id={{wr2.id}} class="activeWR2"> {{wr2.name}}
+                <a id={{wr2.id}} class="activeWR2" data-position={{wr2.position}}> {{wr2.name}}
                     <button id="moveWR2" class="moveToBench">move to bench</button>
                     <button id="selectToSwapWR2" class="selectToSwap"> selection </button>  
                 </a>
@@ -61,7 +61,7 @@
             </div>
 
             <div id="activeTESlot" class="active">
-                <a id={{te.id}} class="activeTE"> {{te.name}}
+                <a id={{te.id}} class="activeTE" data-position={{te.position}}> {{te.name}}
                     <button id="moveTE" class="moveToBench">move to bench</button>
                     <button id="selectToSwapTE" class="selectToSwap"> selection </button>  
                 </a>
@@ -69,7 +69,7 @@
             </div>
 
             <div id="activeKSlot" class="active">
-                <a id={{k.id}} class="activeK"> {{k.name}}
+                <a id={{k.id}} class="activeK" data-position={{k.position}}> {{k.name}}
                     <button id="moveK" class="moveToBench">move to bench</button>
                     <button id="selectToSwapK" class="selectToSwap"> selection </button>  
                 </a>
@@ -77,7 +77,7 @@
             </div>
 
             <div id="activeLBSlot" class="active">
-                <a id={{lb.id}} class="activeLB"> {{lb.name}}
+                <a id={{lb.id}} class="activeLB" data-position={{lb.position}}> {{lb.name}}
                     <button id="moveK" class="moveToBench">move to bench</button>
                     <button id="selectToSwapLB" class="selectToSwap"> selection </button>  
                 </a>
@@ -85,7 +85,7 @@
             </div>
 
             <div id="activeSSlot" class="active">
-                <a id={{s.id}} class="activeS"> {{s.name}}
+                <a id={{s.id}} class="activeS" data-position={{s.position}}> {{s.name}}
                     <button id="moveS" class="moveToBench">move to bench</button>
                     <button id="selectToSwapS" class="selectToSwap"> selection </button>  
                 </a>
@@ -93,7 +93,7 @@
             </div>
 
             <div id="activeCSlot" class="active">
-                <a id={{c.id}} class="activeC"> {{c.name}}
+                <a id={{c.id}} class="activeC" data-position={{c.position}}> {{c.name}}
                     <button id="moveC" class="moveToBench">move to bench</button>
                     <button id="selectToSwapC" class="selectToSwap"> selection </button>  
                 </a>
@@ -101,7 +101,7 @@
             </div>
 
             <div id="activeDLSlot" class="active">
-                <a id={{dl.id}} class="activeDL"> {{dl.name}}
+                <a id={{dl.id}} class="activeDL" data-position={{dl.position}}> {{dl.name}}
                     <button id="moveDL" class="moveToBench">move to bench</button>
                     <button id="selectToSwapDL" class="selectToSwap"> selection </button>  
                 </a>
@@ -112,11 +112,11 @@
         <h4>bench</h4>
 
         <div id="benchRoster">
-        {{#each player}}
+        {{#each bench}}
             <div id={{benchSlot}} class="bench">
                 <a id={{id}} class={{class}}> {{name}}
-                    <button id={{buttonID}} class="moveToActive">move to roster</button>
-                    <button id={{selectionButtonID}} class="selectToSwitch">selection</button>
+                    <button id={{buttonID}} class="moveToActive" data-position={{position}}>move to roster</button>
+                    <button id={{selectionButtonID}} class="selectToSwitch" data-position={{position}}>selection</button>
                 </a>
             </div>
         {{/each}}

@@ -5,24 +5,55 @@
 		<h2> UPDATE EXISTING PLAYER INFORMATION </h2>
 	</div>
 
-	<select id="comu_season">
+	<div id="comu_selection_box">
+	<select id="updated_season">
 		{{#each season}}
 			<option value={{year}}>{{year}}</option>
 		{{/each}}
 	</select>
 
-	<select id="comu_week">
+	<select id="updated_week">
 		{{#each week}}
 			<option value={{val}}>week {{val}}</option>
 		{{/each}}
 	</select>
 
 
-	<select id="comu_player">
+	<select id="updated_player">
 		{{#each player}}
 			<option value={{id}}>{{name}}</option>
 		{{/each}}
 	</select>
+
+	<button id="comu_submit_all">update</button>
+	</div>
+	<br>
+
+
+	<div id="comu_stats_box">
+		<a> touchdowns </a><br>
+		<input id="updated_pass_td" type="number"> pass 
+		<input id="updated_rush_td" type="number"> rush
+		<input id="updated_rec_td" type="number"> rec
+		<br><br>
+		<a> yards gained</a><br>
+		<input id="updated_pass_yd" type="number"> pass
+		<input id="updated_rush_yd" type="number"> rush
+		<input id="updated_rec_yd" type="number"> rec
+		<br><br>
+		<a> other offensive stats </a><br>
+		<input id="updated_num_rec" type="number"> number of receptions
+		<input id="updated_fg" type="number"> field goals
+		<input id="updated_tpc" type="number"> two point conversion
+		<br><br>
+		<a> position neutral stats </a><br>
+		<input id="updated_fumble" type="number"> fumbles
+		<input id="updated_int" type="number"> interceptions
+		<br><br>
+		<a> defensive stats </a><br> 
+		<input id="updated_sack" type="number"> sacks
+		<input id="updated_tackle" type="number"> tackles
+	</div>
 
 	<br>
 </div>

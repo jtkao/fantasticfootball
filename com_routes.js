@@ -10,6 +10,16 @@ router.get("/comse", function(req,res){
 router.post("/comse", function(req, res){
 	console.log(req.body);
 	res.end();
+});
+
+router.post("/comu", function(req, res){
+	console.log(req.body);
+	res.end();
+});
+
+router.post("/comcr", function(req, res){
+	console.log(req.body);
+	res.end();
 })
 
 var years = [{year:2015},{year:2014},{year:2013}];

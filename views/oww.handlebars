@@ -1,21 +1,38 @@
-<script src="assets/logic/oer.js" type="text/javascript"></script>
+<script src="assets/logic/oww_logic.js" type="text/javascript"></script>
 
     <div class="color_box_for_test">
         <h2> WAIVER WIRE </h2>
     </div>
 
-    <select id="sortby_team">
-    	<option value="all"> all </option>
-    	{{#each teams}}
-    		<option value={{cityname}}> {{teamname}} </option>
-    	{{/each}}
-    </select>
+    <div id="sortby_bigbox">
+        <select id="sortby_team">
+        	<option value="all"> all </option>
+        	{{#each teams}}
+        		<option value={{cityname}}> {{teamname}} </option>
+        	{{/each}}
+        </select>
 
-    <select id="sortby_position">
-    	<option value="all"> all </option>
-    	{{#each position}}
-    		<option value={{name}}> {{name}} </option>
-    	{{/each}}
-    </select>
+        <select id="sortby_position">
+        	<option value="all"> all </option>
+        	{{#each position}}
+        		<option value={{name}}> {{name}} </option>
+        	{{/each}}
+        </select>
+
+        <select id="sortby_order">
+                <option value="alphabetical"> alphabetical </option>
+                <option value="ranking"> ranking </option>
+        </select>
+    </div>
+
+    <div id="waiver_bigbox">
+        <h2> Available Players </h2>
+
+        {{#each available}}
+            <li id={{id}} class="showSeasonStats">{{name}}
+            <button id={{id}} class="addMe">add</button>
+            </li>
+        {{/each}}
+    </div>
 
     </div>

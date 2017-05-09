@@ -18,7 +18,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 app.use(com_routes);
-require('./owner_html_routes.js')(app)
+require('./ownerController.js')(app);
 
 db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
