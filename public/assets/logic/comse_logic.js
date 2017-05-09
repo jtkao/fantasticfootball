@@ -53,9 +53,7 @@ $(document).ready(function() {
         	"off_fumble": off_fumble, 
         	"off_int": off_int, 
         	"tackles": tackles, 
-        	"sacks": sacks, 
-        	"def_fumble": def_fumble, 
-        	"def_int": def_int
+        	"sacks": sacks
         };
 
         $.post("/comse", comse_data);

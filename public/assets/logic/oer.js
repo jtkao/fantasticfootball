@@ -1,3 +1,29 @@
+function makeActive(playerPosition, slotPosition) {
+    // the player being made active should be on the bench
+
+    var legalMove = false;
+
+    if (slotPosition === "FLEX") {
+        if (playerPosition === "WR" || playerPosition === "RB") {
+            legalMove = true;
+        }
+    } else if (slotPosition === "RB1" || slotPosition === "RB2") {
+        if (playerPosition === "RB") {
+            legalMove = true;
+        }
+    } else if (slotPosition === "WR1" || slotPosition === "WR2") {
+        if (playerPosition === "WR") {
+            legalMove = true;
+        }
+    } else if (slotPosition === playerPosition) {
+        legalMove = true;
+    }
+
+    return legalMove;
+    // if legalMove is true, then change active to true;
+};
+
+
 $(document).ready(function() {
     var moveFromBench = $(".selectToSwitch");
     var moveFromActive = $(".selectToSwap");
@@ -29,57 +55,85 @@ $(document).ready(function() {
         moveToBench.hide();
         moveToActive.hide();
 
+        var activeSlotPosition = this.id.slice(4);
+
         var selectedClass = ".active" + this.id.slice(4);
         var selectedPlayer = $(selectedClass);
         var activePlayerID = selectedPlayer[0].id;
 
-        console.log(activePlayerID);
+        console.log("first select", activePlayerID, activeSlotPosition);
 
         // select player to switch
         moveFromBench.show();
         moveFromBench.on("click", function() {
-        	var selectedClass = ".bench" + this.id.slice(14);
-        	var selectedPlayer = $(selectedClass)
-        	var benchPlayerID = selectedPlayer[0].id;
 
-        	console.log(benchPlayerID)
+            var benchPlayerPosition = $(this).data("position");
+
+            var selectedClass = ".bench" + this.id.slice(14);
+            var selectedPlayer = $(selectedClass)
+            var benchPlayerID = selectedPlayer[0].id;
+
+            console.log("second select", benchPlayerID, benchPlayerPosition);
+
+            var legal = makeActive(benchPlayerPosition, activeSlotPosition);
+
+            if (legal) {
+                console.log("legal roster move! send put request")
+
+                var myData = {"moveToBench":{ "id": activePlayerID, "active": false },
+                "makeActive":{ "id": benchPlayerID, "active": true }};
+
+                $.ajax({
+                    url: "/oer",
+                    type: 'PUT',
+                    data: myData
+                })
+            } else {
+                console.log("ILLEGAL ROSTER MOVE.");
+            }
         })
-
-        // confirm that the player to be switched is the right position for the slot
-        // then in db, switch active statuses 
-        // the changes should be automatic IF the db moves are valid
-
     });
 
     moveToActive.on("click", function() {
         moveToActive.hide();
         moveToBench.hide();
 
+        var benchPlayerPosition = $(this).data("position");
+
         var selectedClass = ".bench" + this.id.slice(4);
         var selectedPlayer = $(selectedClass);
         var benchPlayerID = selectedPlayer[0].id;
 
-        console.log(benchPlayerID);
+        console.log("first select", benchPlayerID, benchPlayerPosition);
 
         // select player to switch
         moveFromActive.show();
         moveFromActive.on("click", function() {
-            var position = this.id.slice(12);
-            console.log(position);
+            var activeSlotPosition = this.id.slice(12);
 
-        	var selectedClass = ".active" + position;
-        	var selectedPlayer = $(selectedClass)
-        	var activePlayerID = selectedPlayer[0].id;
+            var selectedClass = ".active" + activeSlotPosition;
+            var selectedPlayer = $(selectedClass)
+            var activePlayerID = selectedPlayer[0].id;
 
-        	console.log(activePlayerID)
+            console.log("second select", activePlayerID, activeSlotPosition);
+
+            var legal = makeActive(benchPlayerPosition, activeSlotPosition);
+
+            if (legal) {
+                console.log("legal roster move! send put request")
+
+                var myData = {"moveToBench":{ "id": activePlayerID, "active": false },
+                "makeActive":{ "id": benchPlayerID, "active": true }};
+
+                $.ajax({
+                    url: "/oer",
+                    type: 'PUT',
+                    data: myData
+                })
+            } else {
+                console.log("ILLEGAL ROSTER MOVE.");
+            }
         });
-
-        // confirm that the player to be switched is the right position for the slot
-        // 
-        // then in db, switch active statuses 
-        // the changes should be automatic IF the db moves are valid
-        // send POST request with benchPlayerID, activePlayerID, position 
-        // check benchPlayerID position against position 
-        // if ok, send PUT request to bench activePlayerID and activate benchPlayerID
     });
+
 });
