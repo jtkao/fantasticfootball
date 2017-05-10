@@ -14,8 +14,15 @@
 	max-width: 400px;
 
 }*/
+#waiver_bigbox {
+	padding: 0px;
+}
 
-#roster .btn {
+#sortby_team, #sortby_position, #sortby_order {
+	margin-right: 8px;
+}
+
+#roster .btn, .addMe {
 	float: right;
 }
 
@@ -72,7 +79,7 @@
 	float:right;
 }
 
-#roster_a_bigbox{
+/*#roster_a_bigbox{
 	float:left;
 	width: 50%;
 }
@@ -81,5 +88,4 @@
 	float:right;
 	width: 50%;
 }
-
-
+*/
