@@ -32,10 +32,13 @@ module.exports = function(app) {
         var activePlayerTeamB = activeMatchup(dummyRosterTwo, "b");
 
     	var hdbData = Object.assign({}, activePlayerTeamA, activePlayerTeamB);
+
+        for (object in hdbData) {
+            console.log(hdbData[object]);
+        }
+
         hdbData["bench_player_a"] = benchPlayersTeamA;
         hdbData["bench_player_b"] = benchPlayersTeamB;
-
-        console.log(hdbData)
 
         res.render("omu", hdbData);
     });
