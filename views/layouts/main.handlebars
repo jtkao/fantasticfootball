@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-		<title>THIS SHOULD BE FOR PROJECT 2</title>
+		<title>Owner Layout</title>
 		<script src="https://code.jquery.com/jquery.js"></script>
-  		<link rel="stylesheet" type="text/css" href="assets/style/owner_style.css">
+
+  		<!-- Theme - https://bootswatch.com/united/ -->
+  		<link rel="stylesheet" type="text/css" href="https://bootswatch.com/united/bootstrap.min.css">
+	  		<link rel="stylesheet" type="text/css" href="assets/style/owner_style.css">
 	</head>
 	<body>
-		<div id="owner_header_box">
+		<div id="owner_header_box" class="jumbotron">
 			<h1> OWNER LAYOUT </h1>
-
-			<a href="/oer" class="test_jump_button">ROSTER</a>
-			<a href="/oww" class="test_jump_button">WAIVERS</a>
-			<a href="/omu" class="test_jump_button">MATCHUP</a>
+			<p>
+				<a href="/oer" class="test_jump_button btn btn-primary btn-lg">ROSTER</a>
+				<a href="/oww" class="test_jump_button btn btn-primary btn-lg">WAIVERS</a>
+				<a href="/omu" class="test_jump_button btn btn-primary btn-lg">MATCHUP</a>
+			</p>
 		</div>
 		{{{ body }}}
 	</body>

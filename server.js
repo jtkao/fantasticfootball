@@ -24,7 +24,7 @@ db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
         console.log("App listening on PORT " + PORT);
 
-//model function tetsing area
+//model function testing area
 
         // db.sequelize.query(
         //           'select p.id, p.fname, p.lname '

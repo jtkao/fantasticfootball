@@ -2,18 +2,24 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-		<title>commissioner layout</title>
+		<title>Commissioner Layout</title>
 		<script src="https://code.jquery.com/jquery.js"></script>
   		<link rel="stylesheet" type="text/css" href="assets/style/com_style.css">
+
+  		<!-- Theme - https://bootswatch.com/united/ -->
+  		<link rel="stylesheet" type="text/css" href="https://bootswatch.com/united/bootstrap.min.css">
+
   		<script src="assets/logic/commain_logic.js" type="text/javascript"></script>
 	</head>
 	<body>
 
-		<div id="com_header_box">
+		<div id="com_header_box" class="jumbotron">
 			<h1> COMISSIONER LAYOUT </h1>
-			<a href="/comse" class="test_jump_button">SETUP</a>
-			<a href="/comu" class="test_jump_button">UPDATE</a>
-			<a href="/comcr" class="test_jump_button">CREATE</a>
+			<p>
+				<a href="/comse" class="test_jump_button btn btn-primary btn-lg">SETUP</a>
+				<a href="/comu" class="test_jump_button btn btn-primary btn-lg">UPDATE</a>
+				<a href="/comcr" class="test_jump_button btn btn-primary btn-lg">CREATE</a>
+			</p>
 		</div>
 
 		{{{ body }}}
