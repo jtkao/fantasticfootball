@@ -62,6 +62,9 @@ module.exports = function(app) {
     app.post("/api/add/:id", function(req, res) {
         var playerId = req.params.id;
         console.log(playerId);
+
+        // if roster is full, add
+        // else, make them select player to drop (redirect to /oer)
         res.end();
     })
 
