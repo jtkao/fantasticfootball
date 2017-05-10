@@ -48,6 +48,53 @@ var list = {
 "numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
  },
 
+  "17": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 2, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+ "85": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 1, "int": 1, "tackle": 13, "sack": 0
+ },
+
+ "1": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+ "21": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+ "111": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+ "222": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+  "333": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 2, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+ "444": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 1, "int": 1, "tackle": 13, "sack": 0
+ },
+
+ "555": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+ "666": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+
+ "777": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 0, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ },
+ 
+  "888": { "passTd": 0, "rushTd": 0, "recTd": 0, "passYd": 0, "rushYd": 0, "recYd": 0,
+"numRec": 0, "fg": 3, "tpc": 0, "fumble": 0, "int": 0, "tackle": 0, "sack": 0
+ }
 }
 
 module.exports = list;

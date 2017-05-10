@@ -16,7 +16,10 @@
 }*/
 #waiver_bigbox {
 	padding: 0px;
+	max-height: 400px;
+	overflow: auto;
 }
+
 
 #sortby_team, #sortby_position, #sortby_order {
 	margin-right: 8px;
@@ -77,6 +80,13 @@
 	background-color: black;
 	color:white;
 	float:right;
+}
+
+.littleScoreBox{
+	background-color: indigo;
+	color: lightgreen;
+	padding-left: 2px;
+	padding-right: 2px; 
 }
 
 /*#roster_a_bigbox{

@@ -8,7 +8,19 @@ var loadActive = require("./public/assets/logic/loadActivePlayers.js");
 var activeMatchup = require("./public/assets/logic/activematchup.js");
 var prepareBenchHtml = require("./public/assets/logic/prepareBenchHtml.js");
 
+// dummy scoring rubric
+// TESTING FOR OMU
 
+var testRubric = { "passTd": 5, "rushTd": 6, "recTd": 6, "passYd": 20, "rushYd": 10,
+  "recYd": 10, "numRec": 1, "fg": 3, "tpc": 2, "fumble": 2, "int": 2, "tackle": 1, "sack": 4  
+  };
+
+var dummyStats = require("./public/assets/logic/dummyStats.js");
+var scoring = require("./public/assets/logic/totalfantasyscore.js");
+
+
+
+// controller 
 module.exports = function(app) {
 
     // switch active and bench players on roster
@@ -25,20 +37,31 @@ module.exports = function(app) {
 
     // load matchups
     app.get('/omu', function(req, res){
+        // will need to get both rosters
+        // will need this week in season stats 
+
+        // THERE MUST BE SEASON STAT DATA OR THE APP WILL CRASH.
+
     	var benchPlayersTeamA = prepareBenchHtml(bench);
     	var benchPlayersTeamB = prepareBenchHtml(bench);
 
         var activePlayerTeamA = activeMatchup(rawActive, "a");
         var activePlayerTeamB = activeMatchup(dummyRosterTwo, "b");
 
+        var teamScoreA = scoring.teamFantasyScore(activePlayerTeamA, testRubric, dummyStats);
+        var teamScoreB = scoring.teamFantasyScore(activePlayerTeamB, testRubric, dummyStats);
+
     	var hdbData = Object.assign({}, activePlayerTeamA, activePlayerTeamB);
 
-        for (object in hdbData) {
-            console.log(hdbData[object]);
-        }
+        scoring.addScore(hdbData, testRubric, dummyStats);
+
+        scoring.addScoreBench(benchPlayersTeamA, testRubric, dummyStats);
+        scoring.addScoreBench(benchPlayersTeamB, testRubric, dummyStats);
 
         hdbData["bench_player_a"] = benchPlayersTeamA;
         hdbData["bench_player_b"] = benchPlayersTeamB;
+        hdbData["scoreA"] = teamScoreA
+        hdbData["scoreB"] = teamScoreB
 
         res.render("omu", hdbData);
     });

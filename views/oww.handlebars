@@ -3,80 +3,77 @@
     <div class="color_box_for_test alert alert-dismissible alert-info">
         <h2> WAIVER WIRE </h2>
     </div>
-    
-    <div class="row">
-        <div id="sortby_bigbox" class="btn-group col-xs-offset-1">
-            <select id="sortby_team" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            	<option value="ALL"> All Teams </option>
-            		<option value="Bills"> Bills </option>
-                    <option value="Dolphins"> Dolphins </option>
-                    <option value="Patriots"> Patriots </option>
-                    <option value="Jets"> Jets </option>
-                    <option value="Ravens"> Ravens </option>
-                    <option value="Bengals"> Bengals </option>
-                    <option value="Browns"> Browns </option>
-                    <option value="Steelers"> Steelers </option>
-                    <option value="Texans"> Texans </option>
-                    <option value="Colts"> Colts </option>
-                    <option value="Jaguars"> Jaguars </option>
-                    <option value="Titans"> Titans </option>
-                    <option value="Broncos"> Broncos </option>
-                    <option value="Chiefs"> Chiefs </option>
-                    <option value="Raiders"> Raiders </option>
-                    <option value="Chargers"> Chargers </option>
-                    <option value="Cowboys"> Cowboys </option>
-                    <option value="Giants"> Giants </option>
-                    <option value="Eagles"> Eagles </option>
-                    <option value="Redskins"> Redskins </option>
-                    <option value="Bears"> Bears </option>
-                    <option value="Lions"> Lions </option>
-                    <option value="Packers"> Packers </option>
-                    <option value="Vikings"> Vikings </option>
-                    <option value="Falcons"> Falcons </option>
-                    <option value="Panthers"> Panthers </option>
-                    <option value="Saints"> Saints </option>
-                    <option value="Buccaneers"> Buccaneers </option>
-                    <option value="Cardinals"> Cardinals </option>
-                    <option value="Rams"> Rams </option>
-                    <option value="49ers"> 49ers </option>
-                    <option value="Seahawks"> Seahawks </option>
-            </select>
 
-            <select id="sortby_position" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            	<option value="ALL"> All Positions </option>
-                <option value="QB"> QB </option>
-                <option value="RB"> RB </option>
-                <option value="WR"> WR </option>
-                <option value="TE"> TE </option>
-                <option value="K"> K </option>
-                <option value="LB"> LB </option>
-                <option value="S"> S </option>
-                <option value="C"> C </option>
-                <option value="DL"> DL </option>
-            </select>
+        <div class="row">
+            <div id="sortby_bigbox" class="btn-group col-xs-offset-1">
+                <select id="sortby_team" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                	<option value="ALL"> All Teams </option>
+                		<option value="Bills"> Bills </option>
+                        <option value="Dolphins"> Dolphins </option>
+                        <option value="Patriots"> Patriots </option>
+                        <option value="Jets"> Jets </option>
+                        <option value="Ravens"> Ravens </option>
+                        <option value="Bengals"> Bengals </option>
+                        <option value="Browns"> Browns </option>
+                        <option value="Steelers"> Steelers </option>
+                        <option value="Texans"> Texans </option>
+                        <option value="Colts"> Colts </option>
+                        <option value="Jaguars"> Jaguars </option>
+                        <option value="Titans"> Titans </option>
+                        <option value="Broncos"> Broncos </option>
+                        <option value="Chiefs"> Chiefs </option>
+                        <option value="Raiders"> Raiders </option>
+                        <option value="Chargers"> Chargers </option>
+                        <option value="Cowboys"> Cowboys </option>
+                        <option value="Giants"> Giants </option>
+                        <option value="Eagles"> Eagles </option>
+                        <option value="Redskins"> Redskins </option>
+                        <option value="Bears"> Bears </option>
+                        <option value="Lions"> Lions </option>
+                        <option value="Packers"> Packers </option>
+                        <option value="Vikings"> Vikings </option>
+                        <option value="Falcons"> Falcons </option>
+                        <option value="Panthers"> Panthers </option>
+                        <option value="Saints"> Saints </option>
+                        <option value="Buccaneers"> Buccaneers </option>
+                        <option value="Cardinals"> Cardinals </option>
+                        <option value="Rams"> Rams </option>
+                        <option value="49ers"> 49ers </option>
+                        <option value="Seahawks"> Seahawks </option>
+                </select>
 
-            <select id="sortby_order" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <option value="alphabetical"> Alphabetical </option>
-                    <option value="ranking"> Ranking </option>
-            </select>
+                <select id="sortby_position" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                	<option value="ALL"> All Positions </option>
+                    <option value="QB"> QB </option>
+                    <option value="RB"> RB </option>
+                    <option value="WR"> WR </option>
+                    <option value="TE"> TE </option>
+                    <option value="K"> K </option>
+                    <option value="LB"> LB </option>
+                    <option value="S"> S </option>
+                    <option value="C"> C </option>
+                    <option value="DL"> DL </option>
+                </select>
 
-            <button id="submit_sort" class="btn btn-warning">Sort</button>
+                <select id="sortby_order" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <option value="alphabetical"> Alphabetical </option>
+                        <option value="ranking"> Ranking </option>
+                </select>
+
+                <button id="submit_sort" class="btn btn-warning">Sort</button>
+            </div>
         </div>
-    </div>
+        <br>
 
-    <div class="row">
-        <div id="waiver_bigbox" class="col-xs-4 col-xs-offset-1">
-        <br />
-            <h3> Available Players </h3>
+        <div class="row">
+            <div id="waiver_bigbox" class="col-xs-4 col-xs-offset-1">
+                <h3> Available Players </h3>
 
-            {{#each available}}
-                <div class="well well-sm">
-                    <a id={{id}} class="showSeasonStats">{{name}}
+                {{#each available}}
+                    <div class="well well-sm">
+                        <a id={{id}} class="showSeasonStats">{{name}} </a>
                         <button id={{id}} class="addMe btn btn-success btn-sm">Add</button>
-                    </a>
-                </div>
-
-                <br>
-            {{/each}}
+                    </div>
+                {{/each}}
+            </div>
         </div>
-    </div>
