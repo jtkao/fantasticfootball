@@ -19,7 +19,6 @@ var dummyStats = require("./public/assets/logic/dummyStats.js");
 var scoring = require("./public/assets/logic/totalfantasyscore.js");
 
 
-
 // controller 
 module.exports = function(app) {
 
@@ -104,5 +103,5 @@ module.exports = function(app) {
 
         console.log("db reflects drop player id " + playerId)
     });
-    
+
 };
