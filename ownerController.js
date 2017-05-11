@@ -1,7 +1,7 @@
 // dummy data
 var rawActive = require("./public/assets/logic/data.js");
 var bench = require("./public/assets/logic/dummyBenchOnly.js");
-var dummyRosterTwo = require("./public/assets/logic/dummyRoster2.js");
+var dummyRosterTwo = require("./public/assets/logic/dummyroster2.js");
 
 // actually need these 
 var loadActive = require("./public/assets/logic/loadActivePlayers.js");
