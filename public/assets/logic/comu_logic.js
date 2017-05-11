@@ -25,7 +25,7 @@ $(document).ready(function(){
 
 		var updatedStats = {
 			"id": playerName,
-			"season": season,
+			"season": 1,
 			"week": week,
 			"passTd": passTd,
 			"rushTd": rushTd,
