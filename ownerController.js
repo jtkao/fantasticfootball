@@ -78,24 +78,31 @@ module.exports = function(app) {
         res.end();
     })
 
-    app.post("/api/:id", function(req,res){
+    app.get("/api/:id", function(req,res){
         // modal of player season stats
         var playerId = req.params.id;
         console.log(playerId);
         res.end();
     })
 
-    app.post("/api/add/:id", function(req, res) {
+    app.put("/api/add/:id", function(req, res) {
         var playerId = req.params.id;
         console.log(playerId);
 
         // if roster is full, add
         // else, make them select player to drop (redirect to /oer)
         res.end();
-    })
+    });
 
     app.put("/oer", function(req,res){
         console.log(req.body);
         res.end();
-    })
-}
+    });
+
+    app.put("/api/drop/:id", function(req,res){
+        var playerId = req.params.id;
+
+        console.log("db reflects drop player id " + playerId)
+    });
+    
+};

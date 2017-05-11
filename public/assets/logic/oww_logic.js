@@ -14,13 +14,14 @@ $(document).ready(function(){
 		$.post("/oww", sorted);
 	});
 
+
 	$(".showSeasonStats").on("click", function(){
 		var playerId = this.id;
 
 		var url = "/api/" + playerId;
 		console.log(playerId,url)
 
-		$.post(url);
+		$.get(url);
 	});
 
 	$(".addMe").on("click", function(){
@@ -29,6 +30,10 @@ $(document).ready(function(){
 		var url = "/api/add/" + playerId;
 		console.log(playerId,url)
 
-		$.post(url);
-	})
+		$.ajax({
+			url: url,
+			method: 'PUT',
+			data: playerId
+		})
+	});
 })

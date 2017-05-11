@@ -1,3 +1,14 @@
+function hideMe(box) {
+    var visible = $(box).is(':visible');
+    console.log(visible);
+
+    if (visible === true) {
+        $(box).hide();
+    } else {
+        $(box).show();
+    }
+}
+
 function makeActive(playerPosition, slotPosition) {
     // the player being made active should be on the bench
 
@@ -35,7 +46,14 @@ $(document).ready(function() {
     moveFromActive.hide();
     moveFromBench.hide();
 
+    $(".dropMe").hide();
+    $("#enableDropMe").hide();
+
     $("#enableEdit").on("click", function() {
+        $("#enableEdit").hide();
+        $("#enableDropMe").show();
+
+        $(".dropMe").hide();
         moveFromBench.hide();
         moveFromActive.hide();
 
@@ -136,4 +154,26 @@ $(document).ready(function() {
         });
     });
 
+    $(".dropMe").on("click", function(){
+        var id = this.id;
+        console.log("drop this id: ", id)
+        var url = "/api/drop/" + id
+
+        $.ajax({
+            url: url,
+            type: 'PUT',
+        })
+    });
+
+    $("#enableDropMe").on("click", function(){
+        $("#enableDropMe").hide();
+        $("#enableEdit").show();
+
+        hideMe(".dropMe");
+
+        moveToBench.hide();
+        moveToActive.hide();
+        moveFromActive.hide();
+        moveFromBench.hide();
+    });
 });

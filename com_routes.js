@@ -19,6 +19,8 @@ router.post("/comu", function(req, res){
 
 router.post("/comcr", function(req, res){
 	console.log(req.body);
+
+	// THEN CREATE NEW 16 ROWS IN SEASON STATS FOR PLAYER
 	res.end();
 })
 

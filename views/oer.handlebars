@@ -5,6 +5,7 @@
     </div>
 
     <button id="enableEdit" class="btn btn-warning col-xs-offset-1">Click to Edit Roster</button>
+    <button id="enableDropMe" class="btn btn-warning col-xs-offset-1">Click to Drop Player</button>
     <div id="roster"">
 
         <div class="row">
@@ -17,7 +18,8 @@
                 <div id="activeQBSlot" class="active well well-sm">
                     <a id={{qb.id}} class="activeQB"> {{qb.name}}
                         <button id="moveQB"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapQB" class="selectToSwap btn btn-success btn-sm"> Selection </button> 
+                        <button id="selectToSwapQB" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{qb.id}}> drop </button>
                     </a>
                     <a class="position_marker"> QB </a>
                 </div>
@@ -25,7 +27,8 @@
                <div id="activeRB1Slot" class="active well well-sm">
                     <a id={{rb1.id}} class="activeRB1" data-position={{rb1.position}}> {{rb1.name}}
                         <button id="moveRB1"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapRB1" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapRB1" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{rb1.id}}> drop </button>  
                     </a> 
                     <a class="position_marker"> RB1 </a>
                 </div>
@@ -34,7 +37,8 @@
                 <div id="activeRB2Slot" class="active well well-sm">
                     <a id={{rb2.id}} class="activeRB2" data-position={{rb2.position}}> {{rb2.name}}
                         <button id="moveRB2"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapRB2" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapRB2" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{rb2.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> RB2 </a>
                 </div>
@@ -42,7 +46,8 @@
                 <div id="activeFLEXSlot" class="active well well-sm">
                     <a id={{flex.id}} class="activeFLEX" data-position={{flex.position}}> {{flex.name}}
                         <button id="moveFLEX"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapFLEX" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapFLEX" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{flex.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> FLEX </a>
                 </div>
@@ -50,7 +55,8 @@
                 <div id="activeWR1Slot" class="active well well-sm">
                     <a id={{wr1.id}} class="activeWR1" data-position={{wr1.position}}> {{wr1.name}}
                         <button id="moveWR1"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapWR1" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapWR1" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{wr1.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> WR1 </a>
                 </div>
@@ -58,7 +64,8 @@
                 <div id="activeWR2Slot" class="active well well-sm">
                     <a id={{wr2.id}} class="activeWR2" data-position={{wr2.position}}> {{wr2.name}}
                         <button id="moveWR2"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapWR2" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapWR2" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{wr2.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> WR2 </a>
                 </div>
@@ -66,7 +73,8 @@
                 <div id="activeTESlot" class="active well well-sm">
                     <a id={{te.id}} class="activeTE" data-position={{te.position}}> {{te.name}}
                         <button id="moveTE"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapTE" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapTE" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{te.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> TE </a>
                 </div>
@@ -74,7 +82,8 @@
                 <div id="activeKSlot" class="active well well-sm">
                     <a id={{k.id}} class="activeK" data-position={{k.position}}> {{k.name}}
                         <button id="moveK"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapK" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapK" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{k.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> K </a>
                 </div>
@@ -82,7 +91,8 @@
                 <div id="activeLBSlot" class="active well well-sm">
                     <a id={{lb.id}} class="activeLB" data-position={{lb.position}}> {{lb.name}}
                         <button id="moveK"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapLB" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapLB" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{lb.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> LB </a>
                 </div>
@@ -90,7 +100,8 @@
                 <div id="activeSSlot" class="active well well-sm">
                     <a id={{s.id}} class="activeS" data-position={{s.position}}> {{s.name}}
                         <button id="moveS"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapS" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapS" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{s.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> S </a>
                 </div>
@@ -98,7 +109,8 @@
                 <div id="activeCSlot" class="active well well-sm">
                     <a id={{c.id}} class="activeC" data-position={{c.position}}> {{c.name}}
                         <button id="moveC"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapC" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapC" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{c.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> CB </a>
                 </div>
@@ -106,7 +118,8 @@
                 <div id="activeDLSlot" class="active well well-sm">
                     <a id={{dl.id}} class="activeDL" data-position={{dl.position}}> {{dl.name}}
                         <button id="moveDL"  class="moveToBench btn btn-primary btn-sm"> Move to Bench</button>
-                        <button id="selectToSwapDL" class="selectToSwap btn btn-success btn-sm"> Selection </button>  
+                        <button id="selectToSwapDL" class="selectToSwap btn btn-success btn-sm"> Selection </button>
+                        <button class="dropMe" id={{dl.id}}> drop </button>  
                     </a>
                     <a class="position_marker"> DL </a>
                 </div>
@@ -126,6 +139,7 @@
                     <a id={{id}} class={{class}}> {{name}}
                         <button id={{buttonID}} class="moveToActive btn btn-success btn-sm" data-position={{position}}>Move to Roster</button>
                         <button id={{selectionButtonID}} class="selectToSwitch btn btn-success btn-sm" data-position={{position}}>Selection</button>
+                        <button class="dropMe" id={{id}}> drop </button>
                     </a>
                 </div>
             {{/each}}

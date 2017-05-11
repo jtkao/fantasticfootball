@@ -7,6 +7,14 @@
 
 var owner = {
 
+    getSeason: function(){
+        // get current season
+    }
+
+    getWeek: function(season){
+        // get the current week in the season
+    }
+
     // MAX ROSTER SIZE IS 19
     checkRosterSize: function(fantasyTeamID, season) {
         // query the fantasy roster for single User, return size of roster
@@ -23,6 +31,10 @@ var owner = {
         // *** to make sure the fantasy roster has space to support another player
 
     },
+
+    addPlayer: function(playerID, season) {
+        // add player to fantasy team
+    }
 
     dropPlayer: function(playerId, season) {
         // this will be a PUT
