@@ -3,7 +3,11 @@ function createPlayer(object){
 	// create entry in static player table
 }
 
-function createPlayerGameStats(object){
+function createPlayerStatsAll(playerId, season){
+	// 16 rows for each week
+}
+
+function updatePlayerGameStats(object){
 	// this is what happens on comcr
 	// create entry in player game stats table
 }

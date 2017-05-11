@@ -42,6 +42,10 @@ $(document).ready(function(){
 			"sack": sack
 		};
 
-		$.post("/comu", updatedStats);
+		$.ajax({
+            url: "/comu",
+            type: 'PUT',
+            data: updatedStats
+        });
 	})
-})
+});

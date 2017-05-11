@@ -32,9 +32,9 @@ var owner = {
 
     },
 
-    addPlayer: function(playerID, season) {
+    addPlayer: function(fantasyTeamID, season) {
         // add player to fantasy team
-    }
+    },
 
     dropPlayer: function(playerId, season) {
         // this will be a PUT
