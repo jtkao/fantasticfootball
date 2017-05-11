@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "sdfccsdfcc",
+    "username": "becf12872a09ab",
+    "password": "ac5b754b",
     "database": "fantasy_football",
-    "host": "127.0.0.1",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql"
   }
 }
