@@ -4,7 +4,7 @@ var fantasyTeamRoster = require("./fantasyTeamRoster.js");
 var fantasyTeamStats = require("./fantasyTeamStats.js");
 
 module.exports = function(sequelize, DataTypes) {
-	var player = sequelize.define('t_player', {
+	var Player = sequelize.define('t_player', {
 	    fname: DataTypes.STRING,
 	    lname: DataTypes.STRING,
 	    position: DataTypes.STRING,
@@ -22,5 +22,5 @@ module.exports = function(sequelize, DataTypes) {
  //        }
     });
 
-	return player;
+	return Player;
 };

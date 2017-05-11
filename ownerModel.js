@@ -1,8 +1,6 @@
+var db = require("./models")
 
-// owner model
-// will require ORM
-
-var owner = {
+var ownerModel = {
 
     getSeason: function(){
         // get current season
@@ -236,4 +234,4 @@ var owner = {
 
 };
 
-//console.log(roster);
+module.exports = ownerModel;

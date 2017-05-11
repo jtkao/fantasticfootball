@@ -1,12 +1,12 @@
 // dummy data
-var rawActive = require("./public/assets/logic/data.js");
-var bench = require("./public/assets/logic/dummyBenchOnly.js");
-var dummyRosterTwo = require("./public/assets/logic/dummyroster2.js");
+var rawActive = require("../public/assets/logic/data.js");
+var bench = require("../public/assets/logic/dummyBenchOnly.js");
+var dummyRosterTwo = require("../public/assets/logic/dummyroster2.js");
 
 // actually need these 
-var loadActive = require("./public/assets/logic/loadActivePlayers.js");
-var activeMatchup = require("./public/assets/logic/activematchup.js");
-var prepareBenchHtml = require("./public/assets/logic/prepareBenchHtml.js");
+var loadActive = require("../public/assets/logic/loadActivePlayers.js");
+var activeMatchup = require("../public/assets/logic/activematchup.js");
+var prepareBenchHtml = require("../public/assets/logic/prepareBenchHtml.js");
 
 // dummy scoring rubric
 // TESTING FOR OMU
@@ -15,8 +15,8 @@ var testRubric = { "passTd": 5, "rushTd": 6, "recTd": 6, "passYd": 20, "rushYd":
   "recYd": 10, "numRec": 1, "fg": 3, "tpc": 2, "fumble": 2, "int": 2, "tackle": 1, "sack": 4  
   };
 
-var dummyStats = require("./public/assets/logic/dummyStats.js");
-var scoring = require("./public/assets/logic/totalfantasyscore.js");
+var dummyStats = require("../public/assets/logic/dummyStats.js");
+var scoring = require("../public/assets/logic/totalfantasyscore.js");
 
 
 // controller 

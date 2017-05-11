@@ -1,7 +1,7 @@
 //var Sequelize = require("sequelize");
 
 module.exports = function(sequelize, DataTypes) {
-    var commissioner = sequelize.define("t_commissioner", {
+    var Commissioner = sequelize.define("t_commissioner", {
         description: DataTypes.STRING,
         league_name: DataTypes.STRING,
         username: DataTypes.STRING,
@@ -21,5 +21,5 @@ module.exports = function(sequelize, DataTypes) {
 		two_point_conversion: DataTypes.INTEGER
     });
 
-    return commissioner;
+    return Commissioner;
 };

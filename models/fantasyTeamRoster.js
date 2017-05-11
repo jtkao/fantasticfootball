@@ -4,7 +4,7 @@ var player = require("./player.js");
 var fantasyTeam = require("./fantasyTeam.js");
 
 module.exports = function(sequelize, DataTypes) {
-    var fantasyTeamRoster = sequelize.define('tx_fantasy_team_roster', {
+    var FantasyTeamRoster = sequelize.define('tx_fantasy_team_roster', {
         season_id: DataTypes.INTEGER,
         week_id: DataTypes.INTEGER,
         player_id: DataTypes.INTEGER,
@@ -25,5 +25,5 @@ module.exports = function(sequelize, DataTypes) {
     //     }
     });
 
-    return fantasyTeamRoster;
+    return FantasyTeamRoster;
 };

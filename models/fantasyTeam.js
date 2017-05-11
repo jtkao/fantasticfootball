@@ -6,7 +6,7 @@ var seasonFantasyTeamStats = require("./seasonFantasyTeamStats.js");
 
 
 module.exports = function(sequelize, DataTypes) {
-    var fantasyTeam = sequelize.define('t_fantasy_team', {
+    var FantasyTeam = sequelize.define('t_fantasy_team', {
         description: DataTypes.STRING
     //}
     // , {
@@ -19,5 +19,5 @@ module.exports = function(sequelize, DataTypes) {
     //     }
     });
 
-    return fantasyTeam;
+    return FantasyTeam;
 };

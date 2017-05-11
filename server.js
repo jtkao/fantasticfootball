@@ -3,9 +3,7 @@ var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
 
-var db = require('./models/index.js');
-
-var com_routes = require("./com_routes.js")
+var db = require('./models');
 
 const PORT = process.env.PORT || 4200;
 
@@ -18,8 +16,8 @@ app.use(express.static("./public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
-app.use(com_routes);
-require('./ownerController.js')(app);
+require('./controllers/commissionerController')(app);
+require('./controllers/ownerController.js')(app);
 
 app.get("/", function(req,res){
     res.send("hi")
@@ -38,6 +36,3 @@ db.sequelize.sync({ force: false }).then(function() {
 
     });
 });
-//post has many comments
-//commenst belong to one post
-

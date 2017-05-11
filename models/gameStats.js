@@ -6,7 +6,7 @@ var nflTeam = require("./nflTeam.js");
 
 module.exports = function(sequelize, DataTypes) {
 
-    var gameStats = sequelize.define('t_game_stats', {
+    var GameStats = sequelize.define('t_game_stats', {
         season_id: DataTypes.INTEGER,
         week_id: DataTypes.INTEGER,
         player_id: DataTypes.INTEGER,
@@ -39,5 +39,5 @@ module.exports = function(sequelize, DataTypes) {
     //     }
     });
 
-    return gameStats;
+    return GameStats;
 };

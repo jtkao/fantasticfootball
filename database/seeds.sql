@@ -2,15 +2,15 @@ use fantasy_football;
 
 delete from t_positions;
 
-insert into t_positions (description, createdAt, updatedAt) values ("Quarterback",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Running Back",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Wide Receiver",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Tight End",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Linebacker",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Safety",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Corner",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Dline",now(),now());
-insert into t_positions (description, createdAt, updatedAt) values ("Kicker",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("QB",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("RB",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("WR",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("TE",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("LB",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("S",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("C",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("DL",now(),now());
+insert into t_positions (description, createdAt, updatedAt) values ("K",now(),now());
 
 delete from t_nfl_teams;
 

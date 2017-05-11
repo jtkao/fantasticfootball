@@ -6,12 +6,12 @@
 
 module.exports = function(sequelize, DataTypes) {
 
-    var gameSchedule = sequelize.define('t_game_schedules', {
+    var GameSchedule = sequelize.define('t_game_schedules', {
         week_id: DataTypes.INTEGER,
         game_type: DataTypes.STRING,
         home_team: DataTypes.INTEGER,
         away_team: DataTypes.INTEGER
     });
 
-    return gameSchedule;
+    return GameSchedule;
 };
