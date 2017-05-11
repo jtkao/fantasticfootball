@@ -1,6 +1,3 @@
-// var roster = require("./data.js");
-// var fantasyTeamRoster = require('./fantasyTeamRoster');
-// var player = require('./player');
 
 // owner model
 // will require ORM
@@ -9,10 +6,22 @@ var owner = {
 
     getSeason: function(){
         // get current season
+
+        db.sequelize.query(
+            'select min(id) as id'
+            ' from t_seasons'
+            ' where active = "Y";'
+        )
     }
 
     getWeek: function(season){
         // get the current week in the season
+    
+            db.sequelize.query(
+                'select active_week'
+                ' from t_seasons'
+                ' where active = "Y";'
+        )
     }
 
     // MAX ROSTER SIZE IS 19
@@ -32,8 +41,15 @@ var owner = {
 
     },
 
-    addPlayer: function(fantasyTeamID, season) {
+    addPlayer: function(playerId, fantasyTeamID, season) {
         // add player to fantasy team
+        db.sequelize.query(
+            'update tx_fantasy_team_rosters'
+            +' set fantasy_team_id = ' + fantasyTeamID
+            +' where player_id = ' + playerId
+                +' and season_id = ' + season + ';'
+        )
+
     },
 
     dropPlayer: function(playerId, season) {
@@ -86,13 +102,13 @@ var owner = {
         // get all players that are not on a fatantasy team 
 
         db.sequelize.query(
-                  'select p.id, p.fname, p.lname '
-                + 'from t_players p '
-                + 'where p.id in ( '
-                    + 'select player_id '
-                    + 'from tx_fantasy_team_rosters '
-                    + 'where fantasy_team_id is null '
-                        + 'and season_id = ' + season + ');'
+              'select p.id, p.fname, p.lname '
+            + 'from t_players p '
+            + 'where p.id in ( '
+                + 'select player_id '
+                + 'from tx_fantasy_team_rosters '
+                + 'where fantasy_team_id is null '
+                    + 'and season_id = ' + season + ');'
         ).spread(function(data){
             console.log(data);
             
@@ -143,24 +159,32 @@ var owner = {
         // *** if # of player = 19, User will have to select player to drop (thereby calling dropPlayer())
     },
 
-    benchPlayer: function(playerId) {
+    benchPlayer: function(seasonId, weekId, playerId) {
         // PUT request changes player active status to "bench"
 
-        //@todo bench for the game or on the team or both? 
-        //There's an "active" field in both t_game_stats and tx_fantasy_team_roster
         db.sequelize.query(
 
               'update tx_fantasy_team_rosters '
             + 'set active = "N" '
-            + 'where player_id = ' + playerId + ';'
-
-              'update t_game_stats '
-            + 'set active = "N" '
-            + 'where player_id = ' + playerId + ';'
+            + 'where player_id = ' + playerId 
+                + ' and season_id = ' + seasonId 
+                + ' and week_id = ' + weekId + ';'
 
         ).spread(function(data){
             console.log(data);
         });
+
+        db.sequelize.query(
+
+              'update t_game_stats '
+            + 'set active = "N" '
+            + 'where player_id = ' + playerId 
+                + ' and season_id = ' + seasonId 
+                + ' and week_id = ' + weekId + ';'
+
+        ).spread(function(data){
+            console.log(data);
+        });  
     },
 
     checkPlayerPosition: function(playerId) {
@@ -178,24 +202,32 @@ var owner = {
         });
     },
 
-    activatePlayer: function(playerId) {
+    activatePlayer: function(seasonId, weekId, playerId) {
         // *** checkPlayerPosition will return the player's position
         // *** in the front end, IF this matches with the slot selected on the fantasy roster
         // *** this function (activatePlayer()) will trigger
 
         // PUT request changes player active status to "active"
 
-        //@todo activate for the game or on the team or both? 
-        //There's an "active" field in both t_game_stats and tx_fantasy_team_roster
+        db.sequelize.query(
+
+              'update t_game_stats '
+            + 'set active = "Y" '
+            + 'where player_id = ' + playerId 
+                + ' and season_id = ' + seasonId 
+                + ' and week_id = ' + weekId + ';'
+
+        ).spread(function(data){
+            console.log(data);
+        });
+
         db.sequelize.query(
 
               'update tx_fantasy_team_rosters '
             + 'set active = "Y" '
-            + 'where player_id = ' + playerId + ';'
-
-              'update t_game_stats '
-            + 'set active = "Y" '
-            + 'where player_id = ' + playerId + ';'
+            + 'where player_id = ' + playerId 
+                + ' and season_id = ' + seasonId 
+                + ' and week_id = ' + weekId + ';'
 
         ).spread(function(data){
             console.log(data);

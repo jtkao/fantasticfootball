@@ -26,17 +26,8 @@ db.sequelize.sync({ force: false }).then(function() {
 
 //model function testing area
 
-        // db.sequelize.query(
-        //           'select p.id, p.fname, p.lname '
-        //         + 'from t_players p '
-        //         + 'where p.id in ( '
-        //             + 'select player_id '
-        //             + 'from tx_fantasy_team_rosters '
-        //             + 'where fantasy_team_id is null '
-        //                 + 'and season_id = ' + 1 + ');'
-        // ).spread(function(data){
-        //     console.log(data);
-        // });
+
+
 
 //end function testing
 
@@ -44,3 +35,4 @@ db.sequelize.sync({ force: false }).then(function() {
 });
 //post has many comments
 //commenst belong to one post
+

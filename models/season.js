@@ -9,6 +9,7 @@ module.exports = function(sequelize, DataTypes) {
     var season = sequelize.define('t_season', {
         description: DataTypes.STRING,
         active: DataTypes.STRING,
+        active_week: DataTypes.INTEGER,
         start_year: DataTypes.INTEGER,
         end_year: DataTypes.INTEGER
     // }, {
