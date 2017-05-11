@@ -1,9 +1,6 @@
 drop database if exists fantasy_football;
 CREATE DATABASE fantasy_football;
 
-drop database if exists ff_starter_data;
-CREATE DATABASE ff_starter_data;
-
 use fantasy_football;
 
 create table t_team_owner ( -- UG
@@ -12,10 +9,8 @@ create table t_team_owner ( -- UG
 	description varchar (255) not null,
 	username varchar (255) not null,
 	`password` varchar (255) not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_player ( -- static
@@ -26,31 +21,25 @@ create table t_player ( -- static
 	`position` varchar (255) not null,
 	nfl_team varchar (255) not null,
 	jersey_number int not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
-);
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
+	);
 
 
 create table t_position ( -- static
 	id int not null auto_increment,
 		primary key (id),
 	description varchar (255) not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_fantasy_team ( -- UG
 	id int not null auto_increment,
 		primary key (id),
 	description varchar (255) not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_nfl_team ( -- static
@@ -58,10 +47,8 @@ create table t_nfl_team ( -- static
 		primary key (id),
 	description varchar (255) not null,
 	city varchar (255) not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_game_schedule ( -- static
@@ -73,10 +60,8 @@ create table t_game_schedule ( -- static
     away_team varchar (255) not null,
 	home_team_score int not null,
 	away_team_score int not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_season ( -- static/UG/automated
@@ -84,10 +69,8 @@ create table t_season ( -- static/UG/automated
 		primary key (id),
 	description varchar (255) not null,
 	active char(1) not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_game_stats ( -- UG
@@ -117,10 +100,8 @@ create table t_game_stats ( -- UG
 	tackles int,
 	two_point_conversion int,
 	players_game_fantasy_score int,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table tx_fantasy_team_roster (-- automated based on UG data
@@ -136,10 +117,8 @@ create table tx_fantasy_team_roster (-- automated based on UG data
 	active char(1),
 	join_dt datetime,
 	left_dt datetime,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_fantasy_team_stats ( -- automated
@@ -156,10 +135,8 @@ create table t_fantasy_team_stats ( -- automated
 		foreign key (fantasy_team_id_b) references t_fantasy_team (id),
 	fantasy_team_a_score int,
 	fantasy_team_b_score int,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_season_fantasy_team_stats ( -- automated
@@ -173,10 +150,8 @@ create table t_season_fantasy_team_stats ( -- automated
 	win_ct int,
 	loss_ct int,
 	tie_ct int,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );
 
 create table t_commissioner ( -- automated
@@ -186,8 +161,19 @@ create table t_commissioner ( -- automated
 	league_name varchar(255),
 	username varchar (255) not null,
 	`password` varchar (255) not null,
-	create_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	created_by varchar(50),
-	last_update_dt datetime not null DEFAULT CURRENT_TIMESTAMP,
-	last_updated_by varchar(50)
+	passing_yd int,
+	rushing_yd int,
+	receiving_yd int,
+	passing_td int,
+	rushing_td int,	
+	receiving_td int,
+	reception int,
+	interception int,
+	fumble int,
+	field_goal int,
+	sacks int,
+	tackles int,
+	two_point_conversion int,
+	createdAt datetime not null DEFAULT CURRENT_TIMESTAMP,
+	updatedAt datetime not null DEFAULT CURRENT_TIMESTAMP
 );

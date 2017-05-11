@@ -9,11 +9,11 @@ var commissionerModel = {
 
         db.sequelize.query(
             //first get the position ID
-            'select id from t_positions where description = "' + newPlayer.position + '";'
+            'select id from t_position where description = "' + newPlayer.position + '";'
             //now do the insert
         ).then(function(positionId) {
             db.sequelize.query(
-                'insert t_players (fname, lname, position, nfl_team, jersey_number, createdAt, updatedAt)' + 'values ("' + newPlayer.firstName + '","' + newPlayer.lastName + '",' + positionId[0][0].id + ',"' + newPlayer.nflTeam + '",' + newPlayer.number + ', now(), now());'
+                'insert t_player (fname, lname, position, nfl_team, jersey_number, createdAt, updatedAt)' + 'values ("' + newPlayer.firstName + '","' + newPlayer.lastName + '",' + positionId[0][0].id + ',"' + newPlayer.nflTeam + '",' + newPlayer.number + ', now(), now());'
             )
 
             db.t_player.findOne({
@@ -49,7 +49,7 @@ var commissionerModel = {
         // get scoring values
 
         db.sequelize.query(
-            'select * from t_commissioners where id = ' + commissionerId + ';'
+            'select * from t_commissioner where id = ' + commissionerId + ';'
         ).then(function(data) {
             return data;
         });
