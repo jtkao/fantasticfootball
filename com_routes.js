@@ -14,6 +14,13 @@ router.post("/comse", function(req, res) {
 
 router.put("/comu", function(req, res) {
     console.log(req.body);
+
+    // CALL RUBRIC FROM DB
+    // CALCULATE SCORE
+    // PASS SCORE INTO STATS OBJECT 
+
+    // PASS OBJECT (STATS) INTO DB VIA COMM MODEL
+
     res.end();
 });
 
@@ -25,14 +32,12 @@ router.post("/comcr", function(req, res) {
 })
 
 var years = [{ year: 2015 }, { year: 2014 }, { year: 2013 }];
-var weeks = [{ val: 1 }, { val: 2 }, { val: 3 }, { val: 4 }, { val: 5 }, { val: 6 }, { val: 7 }, { val: 8 }]
 
 router.get("/comu", function(req, res) {
     res.render("comu", {
         title: 'commissioner update',
         layout: "com_main",
         season: years,
-        week: weeks,
         player: roster
     })
 });
