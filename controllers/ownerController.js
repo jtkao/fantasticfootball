@@ -73,14 +73,15 @@ module.exports = function(app) {
         // will need data for all available players
         db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` is null;')
         .then(function(waiverData){
-            console.log(waiverData);
+            var data = waiverData[0];
 
             var hdbData = [];
 
-            for (player in waiverData) {
-                var temp = {}
-                temp.name = (waiverData[player].fname + " " + waiverData[player].lname);
-                temp.id = waiverData[player].id
+            for (var i = 0; i < data.length; i++) {
+                var temp = {};
+
+                temp["name"] = data[i].fname + " " + data[i].lname;
+                temp["id"] = data[i].id;
 
                 hdbData.push(temp);
             }
