@@ -17,39 +17,38 @@ var masterScore = {
     playerScore: function(rubric, position, rawStats) {
         var total = 0;
 
-        // QB RB WR TE K 
         if (position === 1 || position === 2 || position === 3 || position === 4 || position === 9) {
 
             var passing_td = this.scoring.per(rawStats.passing_td, rubric.passing_td);
-            // console.log(passing_td)
+             console.log(passing_td)
             var rushing_td = this.scoring.per(rawStats.rushing_td, rubric.rushing_td);
-            // console.log(rushing_td)
+             console.log(rushing_td)
             var receiving_td = this.scoring.per(rawStats.receiving_td, rubric.receiving_td);
-            // console.log(receiving_td)
+             console.log(receiving_td)
 
             var passing_yd = this.scoring.forEvery(rawStats.passing_yd, rubric.passing_yd);
-            // console.log(passing_yd)
+             console.log(passing_yd)
             var rushing_yd = this.scoring.forEvery(rawStats.rushing_yd, rubric.rushing_yd);
-            // console.log(rushing_yd)
+             console.log(rushing_yd)
             var receiving_yd = this.scoring.forEvery(rawStats.receiving_yd, rubric.receiving_yd);
-            // console.log(receiving_yd)
+             console.log(receiving_yd)
 
             var reception = this.scoring.per(rawStats.reception, rubric.reception);
-            // console.log(reception)
+             console.log(reception)
             var field_goal = this.scoring.per(rawStats.field_goal, rubric.field_goal);
-            // console.log(field_goal)
+             console.log(field_goal)
             var two_point_conversion = this.scoring.per(rawStats.two_point_conversion, rubric.two_point_conversion);
-            // console.log(two_point_conversion)
+             console.log(two_point_conversion)
             var fumble = this.scoring.minusPer(rawStats.fumble, rubric.fumble);
-            // console.log(fumble)
+             console.log(fumble)
             var interception = this.scoring.minusPer(rawStats.interception, rubric.interception);
-            // console.log(interception)
-                //console.log(passing_td,rushing_td,receiving_td,passing_td,rushing_td,receiving_yd,reception,field_goal,two_point_conversion,fumble,int)
+             console.log(interception)
+                console.log(passing_td,rushing_td,receiving_td,passing_td,rushing_td,receiving_yd,reception,field_goal,two_point_conversion,fumble,int)
             total += passing_td + rushing_td + receiving_td + passing_yd + rushing_yd + receiving_yd + reception + field_goal + two_point_conversion + fumble + interception;
 
         } else {
 
-            // all set to rushing_td value in scoring rubric
+             all set to rushing_td value in scoring rubric
             var passing_td = this.scoring.per(rawStats.passing_td, rubric.rushing_td);
             var rushing_td = this.scoring.per(rawStats.rushing_td, rubric.rushing_td);
             var receiving_td = this.scoring.per(rawStats.receiving_td, rubric.rushing_td);
@@ -60,7 +59,7 @@ var masterScore = {
             var tackles = this.scoring.per(rawStats.tackles, rubric.tackles);
             var sacks = this.scoring.per(rawStats.sacks, rubric.sacks);
 
-            //console.log(passing_td,rushing_td,receiving_td,fumble,int,tackles,sacks)
+            console.log(passing_td,rushing_td,receiving_td,fumble,int,tackles,sacks)
             total += passing_td + rushing_td + receiving_td + fumble + interception + tackles + sacks;
         }
 
