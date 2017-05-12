@@ -23,7 +23,9 @@ module.exports = function(app) {
 
                 db.sequelize.query('SELECT `position` FROM `t_players` WHERE `id` = ' + '"' + req.body.id + '"')
                     .then(function(id) {
+                        console.log(id[0]);
                         var fantasyPoints = scoring.playerScore(scoreRubric, "QB", req.body);
+                        console.log(fantasyPoints)
 
                         db.sequelize.query('UPDATE `t_game_stats` ' + 'SET `passing_yd` =' + ' "' + req.body.passing_yd + '"' + ', `rushing_yd` =' + ' "' + req.body.rushing_yd + '"' + ', `receiving_yd` =' + ' "' + req.body.receiving_yd + '"' + ', `passing_td` =' + ' "' + req.body.passing_td + '"' + ', `rushing_td` =' + ' "' + req.body.rushing_td + '"' + ', `receiving_td` =' + ' "' + req.body.receiving_td + '"' + ', `reception` =' + ' "' + req.body.reception + '"' + ', `interception` =' + ' "' + req.body.interception + '"' + ', `fumble` =' + ' "' + req.body.fumble + '"' + ', `field_goal` =' + ' "' + req.body.field_goal + '"' + ', `sacks` =' + ' "' + req.body.sacks + '"' + ', `tackles` =' + ' "' + req.body.tackles + '"' + ', `two_point_conversion` =' + ' "' + req.body.two_point_conversion + '"' + ', `players_game_fantasy_score` =' + ' "' + fantasyPoints + '" ' + 'WHERE `season_id` =' + ' "' + req.body.season + '"' + ' AND `week_id` = ' + ' "' + req.body.week + '"' + ' and `player_id` = ' + ' "' + req.body.id + '";')
                         .then(function() {
