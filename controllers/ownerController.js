@@ -74,8 +74,8 @@ module.exports = function(app) {
         db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` is null;')
         .then(function(waiverData){
             console.log(waiverData);
+            res.render("oww", {available:waiverData})
         })
-        res.render("oww", {available:rawActive})
     });
 
     // 
