@@ -34,6 +34,7 @@ module.exports = function(app) {
     });
 
     app.post("/comcr", function(req, res) {
+        console.log("HELLO")
         console.log(req.body);
 
         commissionerModel.createPlayer(req.body);
@@ -43,6 +44,7 @@ module.exports = function(app) {
 
 
     app.get("/comu", function(req, res) {
+        console.log("hello");
 
         db.sequelize.query('SELECT * FROM `t_seasons`')
             .then(function(season) {
