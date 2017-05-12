@@ -10,7 +10,7 @@ var ownerModel = {
             ' from t_seasons'
             ' where active = "Y";'
         )
-    }
+    },
 
     getWeek: function(season){
         // get the current week in the season
@@ -20,7 +20,7 @@ var ownerModel = {
                 ' from t_seasons'
                 ' where active = "Y";'
         )
-    }
+    },
 
     // MAX ROSTER SIZE IS 19
     checkRosterSize: function(fantasyTeamID, season) {
