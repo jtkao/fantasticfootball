@@ -43,7 +43,8 @@ module.exports = function(app) {
 
 
     app.get("/comu", function(req, res) {
-
+        console.log("hello");
+        
         db.sequelize.query('SELECT * FROM `t_seasons`')
             .then(function(season) {
                 var seasonData = season[0];
