@@ -26,15 +26,21 @@ var scoring = require("../public/assets/logic/scoring.js");
 module.exports = function(app) {
 
     // switch active and bench players on roster
+    // !!!! FANTASY TEAM ID IS DUMMY 
+
     app.get('/oer', function(req, res) {
-        var benchPlayers = prepareBenchHtml(bench);
-        var activePlayer = loadActive(rawActive);
+        var fantasyTeamId = 2;
 
-        var hdbData = activePlayer;
-        hdbData["bench"] = benchPlayers;
-        console.log(hdbData);
+        db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` = ' + fantasyTeamId + ';')
+        .then(function(rosterData){
+            var roster = rosterData[0];
+            var activeRoster = loadActive(roster);
+            var benchRoster = prepareBenchHtml(roster);
 
-        res.render("oer", hdbData);
+            activeRoster["bench"] = benchRoster;
+
+            res.render("oer", activeRoster);
+        })
     });
 
     // load matchups
@@ -90,7 +96,7 @@ module.exports = function(app) {
         })
     });
 
-    // 
+    
     app.post("/oww", function(req,res){
         console.log(req.body);
         res.end();
@@ -103,24 +109,42 @@ module.exports = function(app) {
         res.end();
     })
 
+    // oww
+    // !!!! FANTASY TEAM ID
+    // !!!! CHECK ROSTER SIZE
     app.put("/api/add/:id", function(req, res) {
         var playerId = req.params.id;
         console.log(playerId);
 
-        // if roster is full, add
-        // else, make them select player to drop (redirect to /oer)
-        res.end();
+        var fantasyTeamId = 2;
+
+        db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = ' 
+            + fantasyTeamId + ' WHERE `id` =' + playerId + ';').then(function(result){
+                console.log(result);
+                res.end();
+            })
     });
 
+    // make bench player active player
     app.put("/oer", function(req,res){
         console.log(req.body);
-        res.end();
+
+        db.sequelize.query('UPDATE `t_players` SET `active` = "N" WHERE `id` = ' + req.body["moveToBench[id]"] + ';')
+        .then(function(){
+                db.sequelize.query('UPDATE `t_players` SET `active` = "Y" WHERE `id` = ' + req.body["makeActive[id]"] + ';')
+                .then(function(){
+                    res.end();
+                })
+            })
     });
 
+    // works
     app.put("/api/drop/:id", function(req,res){
         var playerId = req.params.id;
 
-        console.log("db reflects drop player id " + playerId)
+        db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = NULL WHERE `id` = ' + playerId);
+
+        res.end();
     });
 
 };

@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function() { 
 
     $("#submit_sort").on("click", function() {
         var sortTeam = $("#sortby_team").val();
@@ -11,7 +11,7 @@ $(document).ready(function() {
             "order": sortOrder
         };
 
-        $.post("/oww", sorted);
+        $.post("/oww", sorted)
     });
 
 
@@ -22,8 +22,6 @@ $(document).ready(function() {
         console.log(playerId, url)
 
         modal.style.display = "block";
-
-
 
         $.get(url);
     });
@@ -38,9 +36,13 @@ $(document).ready(function() {
             url: url,
             method: 'PUT',
             data: playerId
-        })
+        }).then(window.location = "/oww");
     });
 
+
+
+    // modal copy pasted from w3
+    
     var modal = document.getElementById('myModal');
 
     // Get the <span> element that closes the modal

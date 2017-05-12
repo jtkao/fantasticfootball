@@ -12,18 +12,45 @@ function hideMe(box) {
 function makeActive(playerPosition, slotPosition) {
     // the player being made active should be on the bench
 
+    switch (slotPosition) {
+        case "TE":
+            slotPosition = 4;
+            break;
+        case "QB":
+            slotPosition = 1;
+            break;
+        case "K":
+            slotPosition = 9;
+            break;
+        case "LB":
+            slotPosition = 5;
+            break;
+        case "S":
+            slotPosition = 6;
+            break;
+        case "C":
+            slotPosition = 7;
+            break
+        case "DL":
+            slotPosition = 8;
+            break;
+        default:
+            slotPosition = slotPosition;
+            break;
+    };
+
     var legalMove = false;
 
     if (slotPosition === "FLEX") {
-        if (playerPosition === "WR" || playerPosition === "RB") {
+        if (playerPosition === 3 || playerPosition === 2) {
             legalMove = true;
         }
     } else if (slotPosition === "RB1" || slotPosition === "RB2") {
-        if (playerPosition === "RB") {
+        if (playerPosition === 2) {
             legalMove = true;
         }
     } else if (slotPosition === "WR1" || slotPosition === "WR2") {
-        if (playerPosition === "WR") {
+        if (playerPosition === 3) {
             legalMove = true;
         }
     } else if (slotPosition === playerPosition) {
@@ -69,6 +96,8 @@ $(document).ready(function() {
         }
     });
 
+
+
     moveToBench.on("click", function() {
         moveToBench.hide();
         moveToActive.hide();
@@ -79,38 +108,22 @@ $(document).ready(function() {
         var selectedPlayer = $(selectedClass);
         var activePlayerID = selectedPlayer[0].id;
 
-        console.log("first select", activePlayerID, activeSlotPosition);
+        console.log("drop ", activePlayerID, activeSlotPosition);
 
-        // select player to switch
-        moveFromBench.show();
-        moveFromBench.on("click", function() {
+        var myData = {
+            "moveToBench": { "id": activePlayerID, "active": false },
+            "makeActive": { "id": 0, "active": true }
+        };
 
-            var benchPlayerPosition = $(this).data("position");
-
-            var selectedClass = ".bench" + this.id.slice(14);
-            var selectedPlayer = $(selectedClass)
-            var benchPlayerID = selectedPlayer[0].id;
-
-            console.log("second select", benchPlayerID, benchPlayerPosition);
-
-            var legal = makeActive(benchPlayerPosition, activeSlotPosition);
-
-            if (legal) {
-                console.log("legal roster move! send put request")
-
-                var myData = {"moveToBench":{ "id": activePlayerID, "active": false },
-                "makeActive":{ "id": benchPlayerID, "active": true }};
-
-                $.ajax({
-                    url: "/oer",
-                    type: 'PUT',
-                    data: myData
-                })
-            } else {
-                console.log("ILLEGAL ROSTER MOVE.");
-            }
+        $.ajax({
+            url: "/oer",
+            type: 'PUT',
+            data: myData
         })
     });
+
+
+
 
     moveToActive.on("click", function() {
         moveToActive.hide();
@@ -129,19 +142,24 @@ $(document).ready(function() {
         moveFromActive.on("click", function() {
             var activeSlotPosition = this.id.slice(12);
 
-            var selectedClass = ".active" + activeSlotPosition;
-            var selectedPlayer = $(selectedClass)
-            var activePlayerID = selectedPlayer[0].id;
-
-            console.log("second select", activePlayerID, activeSlotPosition);
-
             var legal = makeActive(benchPlayerPosition, activeSlotPosition);
 
             if (legal) {
                 console.log("legal roster move! send put request")
 
-                var myData = {"moveToBench":{ "id": activePlayerID, "active": false },
-                "makeActive":{ "id": benchPlayerID, "active": true }};
+                var selectedClass = ".active" + activeSlotPosition;
+                var selectedPlayer = $(selectedClass)
+
+                if (selectedPlayer.length) {
+                    var activePlayerID = selectedPlayer[0].id;
+                } else {
+                    activePlayerID = 0;
+                }
+
+                var myData = {
+                    "moveToBench": { "id": activePlayerID, "active": false },
+                    "makeActive": { "id": benchPlayerID, "active": true }
+                };
 
                 $.ajax({
                     url: "/oer",
@@ -154,7 +172,7 @@ $(document).ready(function() {
         });
     });
 
-    $(".dropMe").on("click", function(){
+    $(".dropMe").on("click", function() {
         var id = this.id;
         console.log("drop this id: ", id)
         var url = "/api/drop/" + id
@@ -162,10 +180,15 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             type: 'PUT',
-        })
+        });
     });
 
-    $("#enableDropMe").on("click", function(){
+
+
+
+
+
+    $("#enableDropMe").on("click", function() {
         $("#enableDropMe").hide();
         $("#enableEdit").show();
 
