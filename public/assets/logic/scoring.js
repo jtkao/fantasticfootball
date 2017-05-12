@@ -48,7 +48,6 @@ var masterScore = {
 
         } else {
 
-             all set to rushing_td value in scoring rubric
             var passing_td = this.scoring.per(rawStats.passing_td, rubric.rushing_td);
             var rushing_td = this.scoring.per(rawStats.rushing_td, rubric.rushing_td);
             var receiving_td = this.scoring.per(rawStats.receiving_td, rubric.rushing_td);
