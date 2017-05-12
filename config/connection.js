@@ -6,11 +6,7 @@ var connection = mysql.createConnection({
   user: "becf12872a09ab",
   password: "ac5b754b",
   database: "heroku_37d45f748722cd4",
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
+  connectionLimit: 5
 });
 
 // connect
