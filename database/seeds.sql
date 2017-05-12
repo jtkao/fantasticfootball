@@ -1,5 +1,8 @@
 use fantasy_football;
 
+ALTER TABLE t_team_owners ADD UNIQUE (description);
+ALTER TABLE t_team_owners ADD UNIQUE (username);
+
 delete from t_positions;
 
 insert into t_position (description, createdAt, updatedAt) values ("QB",now(),now());

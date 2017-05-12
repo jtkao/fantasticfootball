@@ -1,18 +1,20 @@
 <script src="assets/logic/comu_logic.js" type="text/javascript"></script>
 
-<div id="comu_bigbox">
-	<div class="color_box_for_test">
+	<div class="color_box_for_test alert alert-dismissible alert-info">
 		<h2> UPDATE EXISTING PLAYER INFORMATION </h2>
 	</div>
 
+<div id="comu_bigbox" class="btn-group col-xs-offset-1">
+
+
 	<div id="comu_selection_box">
-	<select id="updated_season">
+	<select id="updated_season" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		{{#each season}}
 			<option value={{id}}>{{description}}</option>
 		{{/each}}
 	</select>
 
-	<select id="updated_week">
+	<select id="updated_week" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 			<option value=1 >week 1</option>
 			<option value=2 >week 2</option>
 			<option value=3 >week 3</option>
@@ -32,40 +34,65 @@
 	</select>
 
 
-	<select id="updated_player">
+	<select id="updated_player" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 		{{#each player}}
 			<option value={{id}}>{{fname}} {{lname}}</option>
 		{{/each}}
 	</select>
 
-	<button id="comu_submit_all">update</button>
+	<button id="comu_submit_all" class="btn btn-primary">Update</button>
 	</div>
 	<br>
 
 
 	<div id="comu_stats_box">
-		<a> touchdowns </a><br>
-		<input id="updated_pass_td" type="number"> pass 
-		<input id="updated_rush_td" type="number"> rush
-		<input id="updated_rec_td" type="number"> rec
+		<a> Touchdowns </a><br>
+		<label class="control-label">Pass</label>
+		<input class="form-control" id="updated_pass_td" type="number"> 
+
+		<label class="control-label">Rush</label> 
+		<input class="form-control" id="updated_rush_td" type="number"> 
+
+		<label class="control-label">Rec</label>
+		<input class="form-control" id="updated_rec_td" type="number"> 
 		<br><br>
-		<a> yards gained</a><br>
-		<input id="updated_pass_yd" type="number"> pass
-		<input id="updated_rush_yd" type="number"> rush
-		<input id="updated_rec_yd" type="number"> rec
+
+		<a> Yards Gained</a><br>
+		<label class="control-label">Pass</label>
+		<input class="form-control" id="updated_pass_yd" type="number"> 
+
+		<label class="control-label">Rush</label>
+		<input class="form-control" id="updated_rush_yd" type="number"> 
+
+		<label class="control-label">Rec</label>
+		<input class="form-control" id="updated_rec_yd" type="number"> 
 		<br><br>
-		<a> other offensive stats </a><br>
-		<input id="updated_num_rec" type="number"> number of receptions
-		<input id="updated_fg" type="number"> field goals
-		<input id="updated_tpc" type="number"> two point conversion
+
+		<a> Other Offensive Stats </a><br>
+		<label class="control-label">Number of Receptions</label>
+		<input class="form-control" id="updated_num_rec" type="number">
+
+		<label class="control-label">Field Goals</label>
+		<input class="form-control" id="updated_fg" type="number"> 
+
+		<label class="control-label">Two Point Conversion</label>
+		<input class="form-control" id="updated_tpc" type="number">
 		<br><br>
-		<a> position neutral stats </a><br>
-		<input id="updated_fumble" type="number"> fumbles
-		<input id="updated_int" type="number"> interceptions
+
+		<a> Position Neutral Stats </a><br>
+		<label class="control-label">Fumbles</label>
+		<input class="form-control" id="updated_fumble" type="number"> 
+
+		<label class="control-label">Interceptions</label>
+		<input class="form-control" id="updated_int" type="number"> 
 		<br><br>
-		<a> defensive stats </a><br> 
-		<input id="updated_sack" type="number"> sacks
-		<input id="updated_tackle" type="number"> tackles
+
+		<a> Defensive Stats </a><br> 
+		<label class="control-label">Sacks</label>
+		<input class="form-control" id="updated_sack" type="number"> 
+
+		<label class="control-label">Tackles</label>
+		<input class="form-control" id="updated_tackle" type="number"> 
 	</div>
 
 	<br>

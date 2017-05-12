@@ -18,10 +18,10 @@
 							<div class="col-lg-12">
 								<form id="login-form" role="form" onsubmit="return false" style="display: block;">
 									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+										<input type="text" name="username" id="lusername" tabindex="1" class="form-control" placeholder="Username" value="">
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+										<input type="password" name="password" id="lpassword" tabindex="2" class="form-control" placeholder="Password">
 									</div>
 									<div class="form-group text-center">
 										<input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -44,16 +44,19 @@
 										</div>
 									</div>
 								</form>
-								<form id="register-form" role="form" style="display: none;">
+								<form id="register-form" role="form" onsubmit="return false" style="display: none;">
 									<div class="form-group">
-										<input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
+										<input type="password" name="confirm-password" id="rFantasyTeamName" tabindex="2" class="form-control" placeholder="Fantasy Team Name">
+									</div>								
+									<div class="form-group">
+										<input type="text" name="username" id="rusername" tabindex="1" class="form-control" placeholder="Username" value="">
 									</div>
 									<div class="form-group">
-										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+										<input type="password" name="password" id="rpassword" tabindex="2" class="form-control" placeholder="Password">
 									</div>
 									<div class="form-group">
-										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-									</div>
+										<input type="password" name="confirm-password" id="rconfirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+									</div>									
 									<div class="form-group">
 										<div class="row">
 											<div class="col-sm-6 col-sm-offset-3">
@@ -69,3 +72,21 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- Modal -->
+<div class="modal" id='loginModal'>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Oops!</h4>
+      </div>
+      <div class="modal-body">
+        <p>Looks like your passwords do not match</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -48,9 +48,9 @@ body{
 }
 
 #owner_header_box{
-	color: white;
+/*	color: white;
 	background-color: lightgreen;
-	text-align: center;
+*/	text-align: center;
 	padding-bottom: 10px;
 	padding-top: 10px;
 }
