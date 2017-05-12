@@ -23,7 +23,8 @@ module.exports = function(app) {
 
                 db.sequelize.query('SELECT `position` FROM `t_players` WHERE `id` = ' + '"' + req.body.id + '"')
                     .then(function(id) {
-                        console.log(id[0]);
+                        console.log("COMU RAW PLAYER ID, " id[0])
+                        var playerId = id[0][0]
                         var fantasyPoints = scoring.playerScore(scoreRubric, "QB", req.body);
                         console.log(fantasyPoints)
 
