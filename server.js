@@ -18,10 +18,7 @@ app.use(methodOverride("_method"));
 
 require('./controllers/commissionerController')(app);
 require('./controllers/ownerController.js')(app);
-
-app.get("/", function(req,res){
-    res.send("hi")
-})
+require('./controllers/loginController.js')(app);
 
 db.sequelize.sync({ force: false }).then(function() {
     app.listen(PORT, function() {
