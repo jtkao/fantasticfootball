@@ -17,11 +17,11 @@ module.exports = function(app) {
         console.log(req.body);
 
         db.sequelize.query(
-                'SELECT `passing_yd`, `rushing_yd`, `receiving_yd`, `passing_td`, `rushing_td`, ' + '`receiving_td`, `reception`, `interception`, `fumble`, `field_goal`, `sacks`, `tackles`, `two_point_conversion` ' + 'FROM `t_commissioner` WHERE `id` = "1"')
+                'SELECT `passing_yd`, `rushing_yd`, `receiving_yd`, `passing_td`, `rushing_td`, ' + '`receiving_td`, `reception`, `interception`, `fumble`, `field_goal`, `sacks`, `tackles`, `two_point_conversion` ' + 'FROM `t_commissioners` WHERE `id` = "1"')
             .then(function(rubric) {
                 var scoreRubric = (rubric[0][0])
 
-                db.sequelize.query('SELECT `position` FROM `t_player` WHERE `id` = ' + '"' + req.body.id + '"')
+                db.sequelize.query('SELECT `position` FROM `t_players` WHERE `id` = ' + '"' + req.body.id + '"')
                     .then(function(id) {
                         var fantasyPoints = scoring.playerScore(scoreRubric, "QB", req.body);
 
@@ -44,11 +44,11 @@ module.exports = function(app) {
 
     app.get("/comu", function(req, res) {
 
-        db.sequelize.query('SELECT * FROM `t_season`')
+        db.sequelize.query('SELECT * FROM `t_seasons`')
             .then(function(season) {
                 var seasonData = season[0];
 
-                db.sequelize.query('SELECT * FROM `t_player`').then(function(player) {
+                db.sequelize.query('SELECT * FROM `t_players`').then(function(player) {
                     var playerData = player[0];
 
                     res.render("comu", {

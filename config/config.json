@@ -1,23 +1,23 @@
 {
   "development": {
-    "username": "root",
-    "password": "sdfccsdfcc",
-    "database": "fantasy_football",
-    "host": "127.0.0.1",
+    "username": "becf12872a09ab",
+    "password": "ac5b754b",
+    "database": "heroku_37d45f748722cd4",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql"
   },
   "test": {
-    "username": "root",
-    "password": "root",
-    "database": "fantasy_football",
-    "host": "127.0.0.1",
+    "username": "becf12872a09ab",
+    "password": "ac5b754b",
+    "database": "heroku_37d45f748722cd4",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "fantasy_football",
-    "host": "127.0.0.1",
+    "username": "becf12872a09ab",
+    "password": "ac5b754b",
+    "database": "heroku_37d45f748722cd4",
+    "host": "us-cdbr-iron-east-03.cleardb.net",
     "dialect": "mysql"
   }
 }
