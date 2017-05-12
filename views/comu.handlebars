@@ -8,12 +8,11 @@
 	<div id="comu_selection_box">
 	<select id="updated_season">
 		{{#each season}}
-			<option value={{year}}>{{year}}</option>
+			<option value={{id}}>{{description}}</option>
 		{{/each}}
 	</select>
 
 	<select id="updated_week">
-		{{#each week}}
 			<option value=1 >week 1</option>
 			<option value=2 >week 2</option>
 			<option value=3 >week 3</option>
@@ -30,13 +29,12 @@
 			<option value=14 >week 14</option>
 			<option value=15 >week 15</option>
 			<option value=16 >week 16</option>
-		{{/each}}
 	</select>
 
 
 	<select id="updated_player">
 		{{#each player}}
-			<option value={{id}}>{{name}}</option>
+			<option value={{id}}>{{fname}} {{lname}}</option>
 		{{/each}}
 	</select>
 

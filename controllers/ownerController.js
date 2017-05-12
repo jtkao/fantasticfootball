@@ -16,7 +16,7 @@ var testRubric = { "passTd": 5, "rushTd": 6, "recTd": 6, "passYd": 20, "rushYd":
   };
 
 var dummyStats = require("../public/assets/logic/dummyStats.js");
-var scoring = require("../public/assets/logic/totalfantasyscore.js");
+var scoring = require("../public/assets/logic/scoring.js");
 
 
 // controller 

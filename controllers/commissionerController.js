@@ -1,4 +1,5 @@
 var commissionerModel = require("../commissionerModel.js")
+var scoring = require("../public/assets/logic/scoring.js")
 var db = require("../models")
 
 module.exports = function(app) {
@@ -15,11 +16,21 @@ module.exports = function(app) {
     app.put("/comu", function(req, res) {
         console.log(req.body);
 
-        // CALL RUBRIC FROM DB
-        // CALCULATE SCORE
-        // PASS SCORE INTO STATS OBJECT 
+        db.sequelize.query(
+                'SELECT `passing_yd`, `rushing_yd`, `receiving_yd`, `passing_td`, `rushing_td`, ' + '`receiving_td`, `reception`, `interception`, `fumble`, `field_goal`, `sacks`, `tackles`, `two_point_conversion` ' + 'FROM `t_commissioner` WHERE `id` = "1"')
+            .then(function(rubric) {
+                var scoreRubric = (rubric[0][0])
 
-        // PASS OBJECT (STATS) INTO DB VIA COMM MODEL
+                db.sequelize.query('SELECT `position` FROM `t_player` WHERE `id` = ' + '"' + req.body.id + '"')
+                    .then(function(id) {
+                        var fantasyPoints = scoring.playerScore(scoreRubric, "QB", req.body);
+
+                        db.sequelize.query('UPDATE `t_game_stats` ' + 'SET `passing_yd` =' + ' "' + req.body.passing_yd + '"' + ', `rushing_yd` =' + ' "' + req.body.rushing_yd + '"' + ', `receiving_yd` =' + ' "' + req.body.receiving_yd + '"' + ', `passing_td` =' + ' "' + req.body.passing_td + '"' + ', `rushing_td` =' + ' "' + req.body.rushing_td + '"' + ', `receiving_td` =' + ' "' + req.body.receiving_td + '"' + ', `reception` =' + ' "' + req.body.reception + '"' + ', `interception` =' + ' "' + req.body.interception + '"' + ', `fumble` =' + ' "' + req.body.fumble + '"' + ', `field_goal` =' + ' "' + req.body.field_goal + '"' + ', `sacks` =' + ' "' + req.body.sacks + '"' + ', `tackles` =' + ' "' + req.body.tackles + '"' + ', `two_point_conversion` =' + ' "' + req.body.two_point_conversion + '"' + ', `players_game_fantasy_score` =' + ' "' + fantasyPoints + '" ' + 'WHERE `season_id` =' + ' "' + req.body.season + '"' + ' AND `week_id` = ' + ' "' + req.body.week + '"' + ' and `player_id` = ' + ' "' + req.body.id + '";')
+                        .then(function() {
+                            res.end();
+                        })
+                    })
+            })
     });
 
     app.post("/comcr", function(req, res) {
@@ -32,12 +43,22 @@ module.exports = function(app) {
 
 
     app.get("/comu", function(req, res) {
-        res.render("comu", {
-            title: 'commissioner update',
-            layout: "com_main",
-            season: {},
-            player: {}
-        })
+
+        db.sequelize.query('SELECT * FROM `t_season`')
+            .then(function(season) {
+                var seasonData = season[0];
+
+                db.sequelize.query('SELECT * FROM `t_player`').then(function(player) {
+                    var playerData = player[0];
+
+                    res.render("comu", {
+                        title: 'commissioner update',
+                        layout: "com_main",
+                        season: seasonData,
+                        player: playerData
+                    })
+                })
+            });
     });
 
     app.get("/comcr", function(req, res) {
