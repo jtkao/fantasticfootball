@@ -77,7 +77,7 @@ module.exports = function(app) {
 
             var hdbData = [];
 
-            for player in waiverData {
+            for (player in waiverData) {
                 var temp = {}
                 temp.name = (waiverData[player].fname + " " + waiverData[player].lname);
                 temp.id = waiverData[player].id
