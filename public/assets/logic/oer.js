@@ -76,6 +76,20 @@ $(document).ready(function() {
     $(".dropMe").hide();
     $("#enableDropMe").hide();
 
+    // ENABLE DROP 
+    $("#enableDropMe").on("click", function() {
+        $("#enableDropMe").hide();
+        $("#enableEdit").show();
+
+        hideMe(".dropMe");
+
+        moveToBench.hide();
+        moveToActive.hide();
+        moveFromActive.hide();
+        moveFromBench.hide();
+    });
+
+    // ENABLE INTRA ROSTER MOVES
     $("#enableEdit").on("click", function() {
         $("#enableEdit").hide();
         $("#enableDropMe").show();
@@ -96,8 +110,7 @@ $(document).ready(function() {
         }
     });
 
-
-
+    // MOVE ACTIVE PLAYER TO BENCH (NO SWITCH)
     moveToBench.on("click", function() {
         moveToBench.hide();
         moveToActive.hide();
@@ -122,9 +135,7 @@ $(document).ready(function() {
         })
     });
 
-
-
-
+    // MOVE BENCH PLAYER TO ACTIVE (SWITCH OR MOVE TO EMPTY SLOT)
     moveToActive.on("click", function() {
         moveToActive.hide();
         moveToBench.hide();
@@ -172,6 +183,7 @@ $(document).ready(function() {
         });
     });
 
+    // DROP PLAYER
     $(".dropMe").on("click", function() {
         var id = this.id;
         console.log("drop this id: ", id)
@@ -183,20 +195,4 @@ $(document).ready(function() {
         });
     });
 
-
-
-
-
-
-    $("#enableDropMe").on("click", function() {
-        $("#enableDropMe").hide();
-        $("#enableEdit").show();
-
-        hideMe(".dropMe");
-
-        moveToBench.hide();
-        moveToActive.hide();
-        moveFromActive.hide();
-        moveFromBench.hide();
-    });
 });

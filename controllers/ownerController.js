@@ -10,6 +10,7 @@ var dummyRosterTwo = require("../public/assets/logic/dummyroster2.js");
 var loadActive = require("../public/assets/logic/loadActivePlayers.js");
 var activeMatchup = require("../public/assets/logic/activematchup.js");
 var prepareBenchHtml = require("../public/assets/logic/prepareBenchHtml.js");
+var scoring = require("../public/assets/logic/scoring.js");
 
 // dummy scoring rubric
 // TESTING FOR OMU
@@ -19,15 +20,12 @@ var testRubric = { "passTd": 5, "rushTd": 6, "recTd": 6, "passYd": 20, "rushYd":
   };
 
 var dummyStats = require("../public/assets/logic/dummyStats.js");
-var scoring = require("../public/assets/logic/scoring.js");
 
-
-// controller 
 module.exports = function(app) {
 
-    // switch active and bench players on roster
-    // !!!! FANTASY TEAM ID IS DUMMY 
-
+    // !!!! OER !!!!
+    // !!!! FANTASY TEAM ID IS DUMMY !!!! 
+    // LOAD ROSTER OER
     app.get('/oer', function(req, res) {
         var fantasyTeamId = 2;
 
@@ -43,7 +41,7 @@ module.exports = function(app) {
         })
     });
 
-    // load matchups
+    // !!!! load matchups  !!!!
     app.get('/omu', function(req, res){
         // will need to get both rosters
         // will need this week in season stats 
@@ -74,9 +72,9 @@ module.exports = function(app) {
         res.render("omu", hdbData);
     });
 
-    // populate waivers
+    // LOAD AVAILABLE PLAYERS OWW
     app.get("/oww", function(req,res){
-        // will need data for all available players
+
         db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` is null;')
         .then(function(waiverData){
             var data = waiverData[0];
@@ -96,12 +94,13 @@ module.exports = function(app) {
         })
     });
 
-    
+    // !!!! OWW SORT !!!!
     app.post("/oww", function(req,res){
         console.log(req.body);
         res.end();
     })
 
+    // !!!! MODAL !!!!
     app.get("/api/:id", function(req,res){
         // modal of player season stats
         var playerId = req.params.id;
@@ -109,9 +108,9 @@ module.exports = function(app) {
         res.end();
     })
 
-    // oww
-    // !!!! FANTASY TEAM ID
-    // !!!! CHECK ROSTER SIZE
+    // !!!! oww !!!!
+    // !!!! FANTASY TEAM ID !!!!
+    // !!!! CHECK ROSTER SIZE !!!!
     app.put("/api/add/:id", function(req, res) {
         var playerId = req.params.id;
         console.log(playerId);
@@ -125,7 +124,7 @@ module.exports = function(app) {
             })
     });
 
-    // make bench player active player
+    // BENCH MOVES 
     app.put("/oer", function(req,res){
         console.log(req.body);
 
@@ -138,7 +137,7 @@ module.exports = function(app) {
             })
     });
 
-    // works
+    // DROP PLAYER
     app.put("/api/drop/:id", function(req,res){
         var playerId = req.params.id;
 
