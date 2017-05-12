@@ -1,4 +1,4 @@
-var db = require("./models")
+var db = require("../models")
 var ownerModel = require("../ownerModel.js")
 
 // dummy data
