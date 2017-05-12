@@ -52,6 +52,7 @@ var masterScore = {
             var sacks = this.scoring.per(rawStats.sacks, rubric.sacks);
 
             console.log(passing_td,rushing_td,receiving_td,fumble,interception,tackles,sacks)
+            
             total += passing_td + rushing_td + receiving_td + fumble + interception + tackles + sacks;
         }
 

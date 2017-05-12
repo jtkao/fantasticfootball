@@ -1,3 +1,6 @@
+var db = require("./models")
+var ownerModel = require("../ownerModel.js")
+
 // dummy data
 var rawActive = require("../public/assets/logic/data.js");
 var bench = require("../public/assets/logic/dummyBenchOnly.js");
@@ -68,6 +71,10 @@ module.exports = function(app) {
     // populate waivers
     app.get("/oww", function(req,res){
         // will need data for all available players
+        db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` is null;')
+        .then(function(waiverData){
+            console.log(waiverData);
+        })
         res.render("oww", {available:rawActive})
     });
 
