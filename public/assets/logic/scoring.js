@@ -19,7 +19,7 @@ var masterScore = {
 
         var position = parseInt(position);
 
-        console.log("POSITION ID, " position)
+        console.log("POSITION ID ", position)
 
         if (position === 1 || position === 2 || position === 3 || position === 4 || position === 9) {
 
