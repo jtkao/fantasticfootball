@@ -7,8 +7,8 @@ var ownerModel = {
 
         db.sequelize.query(
             'select min(id) as id'
-            ' from t_seasons'
-            ' where active = "Y";'
+            + ' from t_seasons'
+            + ' where active = "Y";'
         )
     },
 
@@ -17,8 +17,8 @@ var ownerModel = {
     
             db.sequelize.query(
                 'select active_week'
-                ' from t_seasons'
-                ' where active = "Y";'
+                + ' from t_seasons'
+                + ' where active = "Y";'
         )
     },
 
