@@ -4,31 +4,29 @@ var commissionerModel = {
 
 
     createPlayer: function(newPlayer) {
-        // this is what happens on comu route
-        // create entry in static player table
 
         db.sequelize.query(
-            //first get the position ID
             'select id from t_position where description = "' + newPlayer.position + '";'
-            //now do the insert
         ).then(function(positionId) {
-            db.sequelize.query(
-                'insert t_player (fname, lname, position, nfl_team, jersey_number, createdAt, updatedAt)' + 'values ("' + newPlayer.firstName + '","' + newPlayer.lastName + '",' + positionId[0][0].id + ',"' + newPlayer.nflTeam + '",' + newPlayer.number + ', now(), now());'
-            )
 
-            db.t_player.findOne({
-                where: {
-                    fname: newPlayer.firstName,
-                    lname: newPlayer.lastName,
-                    nfl_team: newPlayer.nflTeam,
-                    jersey_number: newPlayer.number
-                },
-                attributes: ['id']
-            }).then(function(instance) {
-                var newPlayerId = instance.dataValues.id;
-                commissionerModel.createPlayerStatsAll(newPlayerId, 1);
-            })
-        })
+            db.sequelize.query('insert t_player (fname, lname, position, nfl_team, jersey_number, createdAt, updatedAt)' + 'values ("' + newPlayer.firstName + '","' + newPlayer.lastName + '",' + positionId[0][0].id + ',"' + newPlayer.nflTeam + '",' + newPlayer.number + ', now(), now());')
+            .then(function() {
+
+                db.sequelize.query('SELECT `id` FROM `t_season` WHERE `active` = "Y";')
+                .then(function(now) {
+                    console.log(now);
+                    var activeSeaon = now[0][0].id;
+
+                    db.sequelize.query('SELECT `id` FROM `t_player` WHERE `fname` = ' + '"' + newPlayer.firstName + '"' + ' AND `lname` =' + '"' + newPlayer.lastName + '"' + ' AND `jersey_number` =' + '"' + newPlayer.number + '"' + ' AND `nfl_team` =' + '"' + newPlayer.nflTeam + '";')
+                    .then(function(id) {
+                        console.log(id);
+                        var playerId = id[0][0].id;
+
+                        commissionerModel.createPlayerStatsAll(id[0][0].id, activeSeaon);
+                    });
+                });
+            });
+        });
     },
 
     createPlayerStatsAll: function(playerId, season) {
@@ -45,13 +43,13 @@ var commissionerModel = {
         }
     },
 
-    getScoringValues: function(commissionerId) {
+    getScoringValues: function(commissionerId, cb) {
         // get scoring values
 
         db.sequelize.query(
             'select * from t_commissioner where id = ' + commissionerId + ';'
         ).then(function(data) {
-            return data;
+            cb(data);
         });
     },
 

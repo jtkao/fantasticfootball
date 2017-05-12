@@ -20,8 +20,6 @@ module.exports = function(app) {
         // PASS SCORE INTO STATS OBJECT 
 
         // PASS OBJECT (STATS) INTO DB VIA COMM MODEL
-
-        res.end();
     });
 
     app.post("/comcr", function(req, res) {
@@ -29,7 +27,7 @@ module.exports = function(app) {
 
         commissionerModel.createPlayer(req.body);
 
-        res.redirect("/comcr");
+        res.end();
     })
 
 

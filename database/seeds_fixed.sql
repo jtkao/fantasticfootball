@@ -1,0 +1,1 @@
+insert into t_season (description, active, createdAt, updatedAt) values(2017,"Y",now(),now());
