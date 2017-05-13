@@ -88,6 +88,9 @@ module.exports = function(app) {
 
                 // console.log(teamScoreA, teamScoreB)
 
+                teamScoreA = teamScoreA.toFixed(2);
+                teamScoreB = teamScoreB.toFixed(2);
+
                 var hdbData = Object.assign({}, activeA, activeB);
 
                 hdbData["bench_player_a"] = benchA;
@@ -97,7 +100,24 @@ module.exports = function(app) {
 
                 // console.log(hdbData);
 
-                res.render("omu", hdbData);
+                db.sequelize.query('SELECT `description` FROM `t_fantasy_teams` WHERE `id` = ' 
+                    + idTeamA + ' OR `id` = ' + idTeamB + ';').then(function(names){
+                        console.log(hdbData);
+                        nameTeamA = names[0][0].description
+                        nameTeamB = names[0][1].description
+
+                        hdbData["name_team_a"] = nameTeamA;
+                        hdbData["name_team_b"] = nameTeamB;
+
+                        db.sequelize.query('SELECT `bet` FROM `t_fantasy_team_stats` WHERE `fantasy_team_id_a` = ' 
+                            + idTeamA + ' AND `fantasy_team_id_b` = ' + idTeamB + ';').then(function(money){
+                                var bet = money[0][0].bet;
+                                hdbData["bet"] = bet.toFixed(2);
+
+                                console.log(hdbData);
+                                res.render('omu', hdbData);
+                            })
+                    })
             })
         })
 
@@ -120,7 +140,14 @@ module.exports = function(app) {
 
             activeRoster["bench"] = benchRoster;
 
-            res.render("oer", activeRoster);
+            db.sequelize.query('SELECT `description` FROM `t_fantasy_teams` WHERE `id` = ' + fantasyTeamId + ';')
+            .then(function(teamName){
+                var userTeam = teamName[0][0].description
+
+                activeRoster["logo"] = userTeam;
+
+                res.render("oer", activeRoster);
+            })
         })
     });
 

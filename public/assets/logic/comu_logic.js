@@ -20,8 +20,8 @@ $(document).ready(function(){
 		var fumble = $("#updated_fumble").val();
 		var interception = $("#updated_int").val();
 
-		var tackles = $("#updated_sack").val();
-		var sacks = $("#updated_tackle").val();
+		var tackles = $("#updated_tackle").val();
+		var sacks = $("#updated_sack").val();
 
 		var updatedStats = {
 			"id": playerName,
