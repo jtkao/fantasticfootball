@@ -8,6 +8,7 @@ The D&D of fantasy football
 * jQuery 
 * Sequelize
 * ClearDB
+* Bootstrap
 * Parsley.js
 
 ## Getting Started
@@ -17,7 +18,9 @@ The D&D of fantasy football
 ### Testing
 
 ### Built with
-
+ * Sublime
+ * Handlebars
+ 
 ### Walkthrough
 
 
