@@ -10,12 +10,23 @@
     <div class="col-xs-12">
        <div id="roster_a_bigbox">
 
+            <div id="benchRoster_a" class="col-xs-3">
+                <h3>Bench A</h3>
+
+            	{{#each bench_player_a}}
+                	<div id={{benchSlot}} class="bench well well-sm">
+                    	<a id={{id}} class={{class}}> {{name}} </a>
+                        <a class="littleScoreBox"> {{score}} </a>
+                	</div>
+            	{{/each}}
+            </div>
+
             <div id="activeRoster_a" class="col-xs-3">
                 <h3> Active A <a class="littleScoreBox"> {{scoreA}} <a>
                 </h3>
 
                 <div id="activeQBSlot_a" class="active well well-sm">
-          			<a id={{qb_a.id}} class="activeQB"> {{qb_a.name}} </a>
+                    <a id={{qb_a.id}} class="activeQB"> {{qb_a.name}} </a>
                     <a id=qb_a_score class="littleScoreBox"> {{qb_a.score}} </a>
                 </div>
 
@@ -75,83 +86,75 @@
                 </div>
             </div>
 
-            <div id="benchRoster_a" class="col-xs-3">
-                <h3>Bench A</h3>
-
-            	{{#each bench_player_a}}
-                	<div id={{benchSlot}} class="bench well well-sm">
-                    	<a id={{id}} class={{class}}> {{name}} </a>
-                        <a class="littleScoreBox"> {{score}} </a>
-                	</div>
-            	{{/each}}
-            </div>
-
         </div>
 
         <div id="roster_b_bigbox">
 
             <div id="activeRoster_b" class="col-xs-3">
-            <h3> Active B <a class="littleScoreBox"> {{scoreB}} <a>
+
+            <h3 class="active"> 
+                <a class="name_b"> Active B </a>
+                <a class="littleScoreBox score_b"> {{scoreB}} <a>
             </h3>
 
                 <div id="activeQBSlot_b" class="active well well-sm">
-          			<a id={{qb_b.id}} class="activeQB"> {{qb_b.name}} </a>
-                    <a id=qb_b_score class="littleScoreBox"> {{qb_b.score}} </a>
+          			<a id={{qb_b.id}} class="activeQB name_b"> {{qb_b.name}} </a>
+                    <a id=qb_b_score class="littleScoreBox score_b"> {{qb_b.score}} </a>
                 </div>
 
                 <div id="activeRB1Slot_b" class="active well well-sm">
-                    <a id={{rb1_b.id}} class="activeRB1"> {{rb1_b.name}} </a>
-                    <a id=rb1_b_score class="littleScoreBox"> {{rb1_b.score}} </a> 
+                    <a id={{rb1_b.id}} class="activeRB1 name_b"> {{rb1_b.name}} </a>
+                    <a id=rb1_b_score class="littleScoreBox score_b"> {{rb1_b.score}} </a> 
                 </div>
 
                 <div id="activeRB2Slot_b" class="active well well-sm">
-                    <a id={{rb2_b.id}} class="activeRB2"> {{rb2_b.name}} </a>
-                    <a id=rb2_b_score class="littleScoreBox"> {{rb2_b.score}} </a>
+                    <a id={{rb2_b.id}} class="activeRB2 name_b"> {{rb2_b.name}} </a>
+                    <a id=rb2_b_score class="littleScoreBox score_b"> {{rb2_b.score}} </a>
                 </div>
 
                 <div id="activeFLEXSlot_b" class="active well well-sm">
-                    <a id={{flex_b.id}} class="activeFLEX"> {{flex_b.name}} </a>
-                    <a id=flex_b_score class="littleScoreBox"> {{flex_b.score}} </a>
+                    <a id={{flex_b.id}} class="activeFLEX name_b"> {{flex_b.name}} </a>
+                    <a id=flex_b_score class="littleScoreBox score_b"> {{flex_b.score}} </a>
                 </div>
 
                 <div id="activeWR1Slot_b" class="active well well-sm">
-                    <a id={{wr1_b.id}} class="activeWR1"> {{wr1_b.name}} </a>
-                    <a id=wr1_b_score class="littleScoreBox"> {{wr1_b.score}} </a>
+                    <a id={{wr1_b.id}} class="activeWR1 name_b"> {{wr1_b.name}} </a>
+                    <a id=wr1_b_score class="littleScoreBox score_b"> {{wr1_b.score}} </a>
                 </div>
 
                 <div id="activeWR2Slot_b" class="active well well-sm">
-                    <a id={{wr2_b.id}} class="activeWR2"> {{wr2_b.name}} </a>
-                    <a id=wr2_b_score class="littleScoreBox"> {{wr2_b.score}} </a>
+                    <a id={{wr2_b.id}} class="activeWR2 name_b"> {{wr2_b.name}} </a>
+                    <a id=wr2_b_score class="littleScoreBox score_b"> {{wr2_b.score}} </a>
                 </div>
 
                 <div id="activeTESlot_b" class="active well well-sm">
-                    <a id={{te_b.id}} class="activeTE"> {{te_b.name}} </a>
-                    <a id=te_b_score class="littleScoreBox"> {{te_b.score}} </a>
+                    <a id={{te_b.id}} class="activeTE name_b"> {{te_b.name}} </a>
+                    <a id=te_b_score class="littleScoreBox score_b"> {{te_b.score}} </a>
                 </div>
 
                 <div id="activeKSlot_b" class="active well well-sm">
-                    <a id={{k_b.id}} class="activeK"> {{k_b.name}} </a>
-                    <a id=k_b_score class="littleScoreBox"> {{k_b.score}} </a>
+                    <a id={{k_b.id}} class="activeK name_b"> {{k_b.name}} </a>
+                    <a id=k_b_score class="littleScoreBox score_b"> {{k_b.score}} </a>
                 </div>
 
                 <div id="activeLBSlot_b" class="active well well-sm">
-                    <a id={{lb_b.id}} class="activeLB"> {{lb_b.name}} </a>
-                    <a id=lb_b_score class="littleScoreBox"> {{lb_b.score}} </a>
+                    <a id={{lb_b.id}} class="activeLB name_b"> {{lb_b.name}} </a>
+                    <a id=lb_b_score class="littleScoreBox score_b"> {{lb_b.score}} </a>
                 </div>
 
                 <div id="activeSSlot_b" class="active well well-sm">
-                    <a id={{s_b.id}} class="activeS"> {{s_b.name}} </a>
-                    <a id=s_b_score class="littleScoreBox"> {{s_b.score}} </a>
+                    <a id={{s_b.id}} class="activeS name_b"> {{s_b.name}} </a>
+                    <a id=s_b_score class="littleScoreBox score_b"> {{s_b.score}} </a>
                 </div>
 
                 <div id="activeCSlot_b" class="active well well-sm">
-                    <a id={{c_b.id}} class="activeC"> {{c_b.name}} </a>
-                    <a id=c_b_score class="littleScoreBox"> {{c_b.score}} </a>
+                    <a id={{c_b.id}} class="activeC name_b"> {{c_b.name}} </a>
+                    <a id=c_b_score class="littleScoreBox score_b"> {{c_b.score}} </a>
                 </div>
 
                 <div id="activeDLSlot_b" class="active well well-sm">
-                    <a id={{dl_b.id}} class="activeDL"> {{dl_b.name}} </a>
-                    <a id=dl_b_score class="littleScoreBox"> {{dl_b.score}} </a>
+                    <a id={{dl_b.id}} class="activeDL name_b"> {{dl_b.name}} </a>
+                    <a id=dl_b_score class="littleScoreBox score_b"> {{dl_b.score}} </a>
                 </div>
             </div>
 
@@ -160,8 +163,8 @@
             <h3>Bench B</h3>
             	{{#each bench_player_b}}
                 	<div id={{benchSlot}} class="bench well well-sm">
-                    	<a id={{id}} class={{class}}> {{name}} </a>
-                        <a class="littleScoreBox"> {{score}} </a>
+                    	<a id={{id}} class="{{class}} name_b"> {{name}} </a>
+                        <a class="littleScoreBox score_b"> {{score}} </a>
                 	</div>
             	{{/each}}
             </div>

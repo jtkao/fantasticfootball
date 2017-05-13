@@ -13,6 +13,7 @@ module.exports = function(app) {
     // OMU
     app.get('/omu', function(req, res){
 
+        // ****** FANTASY TEAM ID
         var idTeamA = 2
         var idTeamB = 12
 
@@ -130,7 +131,7 @@ module.exports = function(app) {
     app.get('/oer', function(req, res) {
 
         // ****** FANTASY TEAM ID
-        var fantasyTeamId = 12;
+        var fantasyTeamId = 2;
 
         db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` = ' + fantasyTeamId + ';')
         .then(function(rosterData){
@@ -204,7 +205,7 @@ module.exports = function(app) {
         console.log(playerId);
 
         // ****** FANTASY TEAM ID
-        var fantasyTeamId = 12;
+        var fantasyTeamId = 2;
 
         db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = ' 
             + fantasyTeamId + ' WHERE `id` =' + playerId + ';').then(function(result){
