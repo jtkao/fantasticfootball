@@ -216,3 +216,7 @@ body{
 .active{
     overflow: auto;
 }
+
+.active_box{
+    overflow: auto;
+}
