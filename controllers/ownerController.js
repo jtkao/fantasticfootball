@@ -1,33 +1,135 @@
 var db = require("../models")
 var ownerModel = require("../ownerModel.js")
 
-// dummy data
-var rawActive = require("../public/assets/logic/data.js");
-var bench = require("../public/assets/logic/dummyBenchOnly.js");
-var dummyRosterTwo = require("../public/assets/logic/dummyroster2.js");
-
 // actually need these 
 var loadActive = require("../public/assets/logic/loadActivePlayers.js");
 var activeMatchup = require("../public/assets/logic/activematchup.js");
 var prepareBenchHtml = require("../public/assets/logic/prepareBenchHtml.js");
+var muBench = require("../public/assets/logic/muBench.js");
 var scoring = require("../public/assets/logic/scoring.js");
 
-// dummy scoring rubric
-// TESTING FOR OMU
-
-var testRubric = { "passTd": 5, "rushTd": 6, "recTd": 6, "passYd": 20, "rushYd": 10,
-  "recYd": 10, "numRec": 1, "fg": 3, "tpc": 2, "fumble": 2, "int": 2, "tackle": 1, "sack": 4  
-  };
-
-var dummyStats = require("../public/assets/logic/dummyStats.js");
-
 module.exports = function(app) {
+     // !!!! load matchups  !!!!
+    app.get('/omu', function(req, res){
+
+        var idTeamA = 2
+        var idTeamB = 12
+
+        db.sequelize.query('SELECT `id`,`fname`,`lname`, `fantasy_team_id`, `position`, `active` FROM `t_players` WHERE `fantasy_team_id` ='  
+            + idTeamA + " OR " + idTeamB + ';')
+        .then(function(idData){
+            var rawIds = idData[0];
+
+            var bigQuery = 'SELECT `player_id`, `players_game_fantasy_score` FROM `t_game_stats` WHERE '
+
+            for (var i = 0; i < rawIds.length; i++) {
+
+                if (i === 0) {
+                    bigQuery += '(`player_id` = ' + rawIds[i].id + ' AND `week_id` = ' + 1 + ')'
+                } else {
+                    bigQuery += ' OR (`player_id` = ' + rawIds[i].id + ' AND `week_id` = ' + 1 + ')'
+                }
+
+            };
+
+            // console.log(bigQuery)
+
+            db.sequelize.query(bigQuery).then(function(bigData){
+
+                var bigScore = bigData[0];
+                console.log(rawIds, bigScore);
+                console.log(rawIds.length, bigScore.length)
+
+                for (player in rawIds) {
+                    for (score in bigScore) {
+                        if (rawIds[player].id === bigScore[score].player_id) {
+                            rawIds[player].score = bigScore[score].players_game_fantasy_score;
+                        }
+                    }
+                }
+
+                // HERE WE FINALLY HAVE ALL THE DATA NEEDED FOR HANDLEBARS
+                // console.log(rawIds);
+                // console.log(idTeamA, idTeamB);
+
+                rawDataA = [];
+                rawDataB = [];
+
+                for (var i = 0; i < rawIds.length; i++) {
+                    if (rawIds[i].fantasy_team_id === idTeamA) {
+                        rawDataA.push(rawIds[i]);
+                    } else if (rawIds[i].fantasy_team_id === idTeamB) {
+                        rawDataB.push(rawIds[i]);
+                    }
+                }
+
+                // console.log(rawDataA +"\n" + rawDataB)
+
+                var benchA = muBench(rawDataA);
+                var benchB = muBench(rawDataB);
+
+                var activeA = activeMatchup(rawDataA, "a");
+                var activeB = activeMatchup(rawDataB, "b");
+
+                // console.log(activeA);
+                // console.log(activeB);
+
+                teamScoreA = 0;
+                teamScoreB = 0;
+
+                for (player in activeA) {
+                    teamScoreA += activeA[player].score
+                };
+
+                for (player in activeB) {
+                    teamScoreB += activeB[player].score
+                };
+
+                // console.log(teamScoreA, teamScoreB)
+
+                var hdbData = Object.assign({}, activeA, activeB);
+
+                hdbData["bench_player_a"] = benchA;
+                hdbData["bench_player_b"] = benchB;
+                hdbData["scoreA"] = teamScoreA;
+                hdbData["scoreB"] = teamScoreB;
+
+                // console.log(hdbData);
+
+                res.render("omu", hdbData);
+            })
+        })
+
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // !!!! OER !!!!
     // !!!! FANTASY TEAM ID IS DUMMY !!!! 
     // LOAD ROSTER OER
     app.get('/oer', function(req, res) {
-        var fantasyTeamId = 2;
+
+        // ****** FANTASY TEAM ID
+        var fantasyTeamId = 12;
 
         db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` = ' + fantasyTeamId + ';')
         .then(function(rosterData){
@@ -39,37 +141,6 @@ module.exports = function(app) {
 
             res.render("oer", activeRoster);
         })
-    });
-
-    // !!!! load matchups  !!!!
-    app.get('/omu', function(req, res){
-        // will need to get both rosters
-        // will need this week in season stats 
-
-        // THERE MUST BE SEASON STAT DATA OR THE APP WILL CRASH.
-
-    	var benchPlayersTeamA = prepareBenchHtml(bench);
-    	var benchPlayersTeamB = prepareBenchHtml(bench);
-
-        var activePlayerTeamA = activeMatchup(rawActive, "a");
-        var activePlayerTeamB = activeMatchup(dummyRosterTwo, "b");
-
-        var teamScoreA = scoring.teamFantasyScore(activePlayerTeamA, testRubric, dummyStats);
-        var teamScoreB = scoring.teamFantasyScore(activePlayerTeamB, testRubric, dummyStats);
-
-    	var hdbData = Object.assign({}, activePlayerTeamA, activePlayerTeamB);
-
-        scoring.addScore(hdbData, testRubric, dummyStats);
-
-        scoring.addScoreBench(benchPlayersTeamA, testRubric, dummyStats);
-        scoring.addScoreBench(benchPlayersTeamB, testRubric, dummyStats);
-
-        hdbData["bench_player_a"] = benchPlayersTeamA;
-        hdbData["bench_player_b"] = benchPlayersTeamB;
-        hdbData["scoreA"] = teamScoreA
-        hdbData["scoreB"] = teamScoreB
-
-        res.render("omu", hdbData);
     });
 
     // LOAD AVAILABLE PLAYERS OWW
@@ -124,7 +195,8 @@ module.exports = function(app) {
         var playerId = req.params.id;
         console.log(playerId);
 
-        var fantasyTeamId = 2;
+        // ****** FANTASY TEAM ID
+        var fantasyTeamId = 12;
 
         db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = ' 
             + fantasyTeamId + ' WHERE `id` =' + playerId + ';').then(function(result){
