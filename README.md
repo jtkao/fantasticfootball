@@ -1,4 +1,5 @@
 # Fantastic Football
+The D&D of fantasy football
 
 ## Technologies
 * node.js
