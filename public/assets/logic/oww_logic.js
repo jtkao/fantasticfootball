@@ -1,4 +1,23 @@
 $(document).ready(function() { 
+    // modal copy pasted from w3
+    
+    var modal = document.getElementById('myModal');
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
 
     $("#submit_sort").on("click", function() {
         var sortTeam = $("#sortby_team").val();
@@ -22,7 +41,7 @@ $(document).ready(function() {
         console.log(playerId, url)
 
         $.get(url).then(function(){
-          modal.style.display = "block";  
+            modal.style.display = "block";
         })
     });
 
@@ -38,26 +57,4 @@ $(document).ready(function() {
             data: playerId
         }).then(window.location = "/oww");
     });
-
-
-
-    // modal copy pasted from w3
-    
-    var modal = document.getElementById('myModal');
-
-    // Get the <span> element that closes the modal
-    var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-})
+});
