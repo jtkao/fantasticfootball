@@ -6,6 +6,29 @@ var loginModel = {
         return msg;
     },
 
+    registerNewUser: function(credentials, cb){
+
+        //first validate if the username entered exists
+        db.sequelize.query(
+            'select *' + ' from t_team_owners' + ' where username = "' + credentials.username + '";'
+        ).spread(function(usernameData) {
+
+            //if data returns a user name, send back message sayig that username already exists
+            if (usernameData.length > 0){
+                cb('Username already exists');
+
+            } else {
+
+                db.sequelize.query(
+                    'insert t_team_owners (description, username, password, createdat, updatedat)'
+                    + 'values ("' + credentials.FantasyTeamName + '", "' + credentials.username + '", "' + credentials.password + '", now(), now());'
+                ).spread(function(credentialsData) {
+                    cb('Account created successfully!');
+                });
+            }
+        });         
+    },
+    
     validateCredentials: function(credentials, cb) {
 
         var err;
@@ -46,30 +69,7 @@ var loginModel = {
             }
         });
 
-    },
-
-    registerNewUser: function(credentials, cb){
-
-        //first validate if the username entered exists
-        db.sequelize.query(
-            'select *' + ' from t_team_owners' + ' where username = "' + credentials.username + '";'
-        ).spread(function(usernameData) {
-
-            //if data returns a user name, send back message sayig that username already exists
-            if (usernameData.length > 0){
-                cb('Username already exists');
-
-            } else {
-
-                db.sequelize.query(
-                    'insert t_team_owners (description, username, password, createdat, updatedat)'
-                    + 'values ("' + credentials.FantasyTeamName + '", "' + credentials.username + '", "' + credentials.password + '", now(), now());'
-                ).spread(function(credentialsData) {
-                    cb('Account created successfully!');
-                });
-            }
-        });         
-    }
+    }    
 }
 
 module.exports = loginModel;
