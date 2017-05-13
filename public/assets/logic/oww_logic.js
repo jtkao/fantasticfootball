@@ -1,6 +1,6 @@
-$(document).ready(function() { 
+$(document).ready(function() {
     // modal copy pasted from w3
-    
+
     var modal = document.getElementById('myModal');
 
     // Get the <span> element that closes the modal
@@ -18,29 +18,13 @@ $(document).ready(function() {
         }
     }
 
-
-    $("#submit_sort").on("click", function() {
-        var sortTeam = $("#sortby_team").val();
-        var sortPosition = $("#sortby_position").val();
-        var sortOrder = $("#sortby_order").val();
-
-        var sorted = {
-            "team": sortTeam,
-            "position": sortPosition,
-            "order": sortOrder
-        };
-
-        $.post("/oww", sorted)
-    });
-
-
     $(".showSeasonStats").on("click", function() {
         var playerId = this.id;
 
         var url = "/api/" + playerId;
         console.log(playerId, url)
 
-        $.get(url).then(function(){
+        $.get(url).then(function() {
             modal.style.display = "block";
         })
     });
@@ -56,5 +40,54 @@ $(document).ready(function() {
             method: 'PUT',
             data: playerId
         }).then(window.location = "/oww");
+    });
+
+    $("#submit_sort").on("click", function() {
+
+        var exempt = document.getElementsByClassName("sortable");
+
+        for (var i = 0; i < exempt.length; i++) {
+            $(exempt[i]).show();
+        };
+
+        var sortTeam = $("#sortby_team").val();
+        var sortPosition = $("#sortby_position").val();
+        var sortOrder = $("#sortby_order").val();
+
+
+        for (var i = 0; i < exempt.length; i++) {
+            var test = $(exempt[i]).attr("class");
+
+            var team = test.slice(18);
+            team = team.slice(0, -9);
+
+            var position = test.slice(16,18);
+            position = parseInt(position);
+
+            if ((sortPosition === "ALL") && (sortTeam === "ALL")) {
+                i = exempt.length;
+
+            } else if ((sortPosition === "ALL") && (sortTeam != "ALL")) {
+                console.log(sortTeam)
+
+                if (team != sortTeam) {
+                    console.log(team, sortTeam)
+                    $(exempt[i]).hide();
+                }
+
+            } else if ((sortPosition != "ALL") && (sortTeam === "ALL")) {
+                console.log(sortPosition)
+
+                if (position != sortPosition) {
+                    console.log(position, sortPosition)
+                    $(exempt[i]).hide();
+                }
+            } else {
+
+                if ((position != sortPosition) || (team != sortTeam)){
+                    $(exempt[i]).hide();
+                }
+            }
+        }
     });
 });

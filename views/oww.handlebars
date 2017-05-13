@@ -44,15 +44,15 @@
 
                 <select id="sortby_position" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                 	<option value="ALL"> All Positions </option>
-                    <option value="QB"> QB </option>
-                    <option value="RB"> RB </option>
-                    <option value="WR"> WR </option>
-                    <option value="TE"> TE </option>
-                    <option value="K"> K </option>
-                    <option value="LB"> LB </option>
-                    <option value="S"> S </option>
-                    <option value="C"> C </option>
-                    <option value="DL"> DL </option>
+                    <option value=1> QB </option>
+                    <option value=2> RB </option>
+                    <option value=3> WR </option>
+                    <option value=4> TE </option>
+                    <option value=9> K </option>
+                    <option value=5> LB </option>
+                    <option value=6> S </option>
+                    <option value=7> C </option>
+                    <option value=8> DL </option>
                 </select>
 
                 <select id="sortby_order" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
@@ -70,7 +70,7 @@
                 <h3> Available Players </h3>
 
                 {{#each available}}
-                    <div class="well well-sm">
+                    <div class="well well-sm pos{{position}} {{team}} sortable">
                         <a id={{id}} class="showSeasonStats">{{name}} </a>
                         <button id={{id}} class="addMe btn btn-success btn-sm">Add</button>
                     </div>

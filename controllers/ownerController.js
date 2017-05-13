@@ -166,19 +166,16 @@ module.exports = function(app) {
 
                 temp["name"] = data[i].fname + " " + data[i].lname;
                 temp["id"] = data[i].id;
+                temp["position"] = data[i].position;
+                temp["team"] = data[i].nfl_team;
 
                 hdbData.push(temp);
             }
 
-            res.render("oww", {available:hdbData, week:[]})
+            res.render("oww", {available:hdbData})
         })
     });
 
-    // !!!! OWW SORT !!!!
-    app.post("/oww", function(req,res){
-        console.log(req.body);
-        res.end();
-    })
 
     // !!!! MODAL !!!!
     app.get("/api/:id", function(req,res){
@@ -199,7 +196,6 @@ module.exports = function(app) {
 
     // !!!! oww !!!!
     // !!!! FANTASY TEAM ID !!!!
-    // !!!! CHECK ROSTER SIZE !!!!
     app.put("/api/add/:id", function(req, res) {
         var playerId = req.params.id;
         console.log(playerId);
