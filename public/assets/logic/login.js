@@ -64,7 +64,7 @@ $(function() {
 			validatedFields = true
 		}
 
-		console.log(credentials);
+		// console.log(credentials);
 		if (validatedFields === true) {
 			if (credentials.password != credentials.confirmPassword) {
 				$('.modal-body').text('Looks like your passwords do not match');			
