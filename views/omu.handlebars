@@ -11,7 +11,7 @@
        <div id="roster_a_bigbox">
 
             <div id="benchRoster_a" class="col-xs-3">
-                <h3>Bench A</h3>
+                <h4>Bench A</h4>
 
             	{{#each bench_player_a}}
                 	<div id={{benchSlot}} class="bench well well-sm">
@@ -23,10 +23,10 @@
 
             <div id="activeRoster_a" class="col-xs-3">
 
-                <h3 class="active_box"> 
+                <h4 class="active_box"> 
                     <a> Active </a>
                     <a class="littleScoreBox"> {{scoreA}} <a>
-                </h3>
+                </h4>
 
                 <div id="activeQBSlot_a" class="active well well-sm">
                     <a id={{qb_a.id}} class="activeQB"> {{qb_a.name}} </a>
@@ -95,10 +95,10 @@
 
             <div id="activeRoster_b" class="col-xs-3">
 
-            <h3 class="active_box"> 
-                <a class="name_b"> Active B </a>
+            <h4 class="active_box"> 
+                <a class="name_b"> Active </a>
                 <a class="littleScoreBox score_b"> {{scoreB}} <a>
-            </h3>
+            </h4>
 
                 <div id="activeQBSlot_b" class="active well well-sm">
           			<a id={{qb_b.id}} class="activeQB name_b"> {{qb_b.name}} </a>
@@ -163,7 +163,9 @@
 
 
             <div id="benchRoster_b" class="col-xs-3">
-            <h3>Bench B</h3>
+            <div class="active_box">
+                <h4>Bench B</h4>
+            <div>
             	{{#each bench_player_b}}
                 	<div id={{benchSlot}} class="bench well well-sm">
                     	<a id={{id}} class="{{class}} name_b"> {{name}} </a>

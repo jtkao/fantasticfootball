@@ -1,30 +1,13 @@
-/*.bench {
-	padding:2px;
-	margin: 2px;
-	border: 1px solid black;
-	color: red;
-	max-width: 400px;
-/
-
-/*.active {
-	padding:2px;
-	margin: 2px;
-	border: 1px solid black;
-	color: green;
-	max-width: 400px;
-
-}*/
-
 #erLogo{
     color:darkorange;
 }
 
 #betDisplay{
-    padding-top:1px;
+    padding-top:5px;
     padding-bottom:1px;
     background-color: powderblue;
     color: red;
-    border: 2px dotted lightskyblue;
+    border: 1px solid lightskyblue;
 }
 
 body{
