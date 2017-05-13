@@ -33,3 +33,4 @@ The D&D of fantasy football
 
 ### Acknowledgment
 * Marshawn Lynch, for inspiring me to beast code 
+* To my wife and kids, from Steven
