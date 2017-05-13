@@ -9,7 +9,8 @@ var muBench = require("../public/assets/logic/muBench.js");
 var scoring = require("../public/assets/logic/scoring.js");
 
 module.exports = function(app) {
-     // !!!! load matchups  !!!!
+    
+    // OMU
     app.get('/omu', function(req, res){
 
         var idTeamA = 2
@@ -101,26 +102,6 @@ module.exports = function(app) {
         })
 
     });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     // !!!! OER !!!!

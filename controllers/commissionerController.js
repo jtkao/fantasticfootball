@@ -10,7 +10,17 @@ module.exports = function(app) {
 
     app.post("/comse", function(req, res) {
         console.log(req.body);
-        res.end();
+
+        db.sequelize.query('UPDATE `t_commissioners` ' + 'SET `passing_yd` =' + ' "' + req.body.passing_yd + '"' 
++ ', `rushing_yd` =' + ' "' + req.body.rushing_yd + '"' + ', `receiving_yd` =' + ' "' + req.body.receiving_yd 
++ '"' + ', `passing_td` =' + ' "' + req.body.passing_td + '"' + ', `rushing_td` =' + ' "' + req.body.rushing_td 
++ '"' + ', `receiving_td` =' + ' "' + req.body.receiving_td + '"' + ', `reception` =' + ' "' + req.body.reception 
++ '"' + ', `interception` =' + ' "' + req.body.interception + '"' + ', `fumble` =' + ' "' + req.body.fumble + '"' 
++ ', `field_goal` =' + ' "' + req.body.field_goal + '"' + ', `sacks` =' + ' "' + req.body.sacks + '"' + ', `tackles` =' 
++ ' "' + req.body.tackles + '"' + ', `two_point_conversion` =' + ' "' + req.body.two_point_conversion + '";')
+        .then(function(){
+            res.end();
+        })
     });
 
     app.put("/comu", function(req, res) {
