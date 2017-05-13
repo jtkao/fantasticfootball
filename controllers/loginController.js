@@ -9,19 +9,20 @@ module.exports = function(app) {
     });
 
     app.post('/login', function(req, res){
-        console.log(req.body);
 
-        login.validateCredentials(req.body);
+        login.validateCredentials(req.body, function(msg){
+            
+            res.send(msg);
 
-        res.redirect('/oer');
+        });
     });
 
     app.post('/register', function(req, res){
-        console.log(req.body);
 
-        login.registerNewUser(req.body);
+        login.registerNewUser(req.body, function(msg){
 
-        res.redirect('/oer');
+            res.send(msg);
+        });
     });
 
 };

@@ -26,7 +26,21 @@ $(function() {
 			$('#loginModal').modal('show');
 		} else {
 			$.post('/login', credentials, function(data){
-				console.log(data);
+				
+				if (data === 'Login Successful!') {
+					$('.modal-header').text(data);	
+					$('.modal-body').html('Welcome Back!<br /> <br />We are redirecting you now...');	
+					$('#loginModal').modal('show');
+
+					setTimeout(function() { 
+					    window.location.href = '/oer'
+					 }, 1000 * 1.5); //1.5 seconds
+
+				} else {
+					$('.modal-body').text(data);			
+					$('#loginModal').modal('show');
+				}
+
 			});		
 		}
 
@@ -50,14 +64,26 @@ $(function() {
 			validatedFields = true
 		}
 
-		console.log(credentials);
+		// console.log(credentials);
 		if (validatedFields === true) {
 			if (credentials.password != credentials.confirmPassword) {
 				$('.modal-body').text('Looks like your passwords do not match');			
 				$('#loginModal').modal('show');
 			} else {
 				$.post('/register', credentials, function(data){
-					console.log(data);
+					
+					if (data === 'Account created successfully!') {
+						$('.modal-header').text(data);	
+						$('.modal-body').html('Welcome to Fantastic Football!<br /> <br />We are redirecting you now...');			
+						$('#loginModal').modal('show');
+
+						setTimeout(function() { 
+						    window.location.href = '/oer'
+						 }, 1000 * 1.5); //1.5 seconds	
+					} else {
+						$('.modal-body').text(data);			
+						$('#loginModal').modal('show');
+					}				
 				});
 			}
 		}
