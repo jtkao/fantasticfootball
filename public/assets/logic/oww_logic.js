@@ -21,9 +21,9 @@ $(document).ready(function() {
         var url = "/api/" + playerId;
         console.log(playerId, url)
 
-        modal.style.display = "block";
-
-        $.get(url);
+        $.get(url).then(function(){
+          modal.style.display = "block";  
+        })
     });
 
     $(".addMe").on("click", function() {

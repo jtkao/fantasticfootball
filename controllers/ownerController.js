@@ -90,7 +90,7 @@ module.exports = function(app) {
                 hdbData.push(temp);
             }
 
-            res.render("oww", {available:hdbData})
+            res.render("oww", {available:hdbData, week:[]})
         })
     });
 
@@ -105,7 +105,16 @@ module.exports = function(app) {
         // modal of player season stats
         var playerId = req.params.id;
         console.log(playerId);
-        res.end();
+
+        var seasonId = 1;
+
+        db.sequelize.query('SELECT * FROM `t_game_stats` WHERE `player_id` = ' 
+            + playerId + ' AND `season_id` = ' + seasonId + ';').then(function(gameData){
+                var hdbData = gameData[0]
+                console.log(hdbData);
+
+                res.render("oww", {week:hdbData});
+            })
     })
 
     // !!!! oww !!!!
