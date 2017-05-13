@@ -32,5 +32,5 @@ The D&D of fantasy football
 ### License
 
 ### Acknowledgment
-* Marshawn Lynch, for inspiring me to beast code 
+* Marshawn Lynch, for inspiring me to beast code everyday
 * To my wife and kids, from Steven
