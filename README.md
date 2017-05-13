@@ -1,6 +1,13 @@
 # Fantastic Football
 
 ## Technologies
+* node.js
+* Handlebars
+* Express
+* jQuery 
+* Sequelize
+* ClearDB
+* Parsley.js
 
 ## Getting Started
 
@@ -18,8 +25,7 @@
 * **Steven Jirjis**
 
 
-### Lisence
-
+### License
 
 ### Acknowledgment
 * Marshawn Lynch, for inspiring me to beast code 
