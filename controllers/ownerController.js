@@ -207,11 +207,20 @@ module.exports = function(app) {
         // ****** FANTASY TEAM ID
         var fantasyTeamId = 2;
 
-        db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = ' 
-            + fantasyTeamId + ' WHERE `id` =' + playerId + ';').then(function(result){
-                console.log(result);
-                res.end();
-            })
+        db.sequelize.query('SELECT * FROM `t_players` WHERE `fantasy_team_id` = ' + fantasyTeamId).then(function(num){
+            var rosterSize = num[0].length;
+            console.log(rosterSize);
+
+            if (rosterSize <= 18) {
+                db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = ' 
+                    + fantasyTeamId + ' WHERE `id` =' + playerId + ';').then(function(result){
+                        console.log(result);
+                        res.end();
+                    })
+            } else {
+                console.log("ROSTER FULL")
+            }
+        })
     });
 
     // BENCH MOVES 
@@ -231,7 +240,7 @@ module.exports = function(app) {
     app.put("/api/drop/:id", function(req,res){
         var playerId = req.params.id;
 
-        db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = NULL WHERE `id` = ' + playerId);
+        db.sequelize.query('UPDATE `t_players` SET `fantasy_team_id` = NULL, `active` = "N" WHERE `id` = ' + playerId);
 
         res.end();
     });

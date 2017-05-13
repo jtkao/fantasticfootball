@@ -132,7 +132,7 @@ $(document).ready(function() {
             url: "/oer",
             type: 'PUT',
             data: myData
-        })
+        }).then(window.location = "/oer")
     });
 
     // MOVE BENCH PLAYER TO ACTIVE (SWITCH OR MOVE TO EMPTY SLOT)
@@ -176,7 +176,8 @@ $(document).ready(function() {
                     url: "/oer",
                     type: 'PUT',
                     data: myData
-                })
+                }).then(window.location = "/oer")
+
             } else {
                 console.log("ILLEGAL ROSTER MOVE.");
             }
@@ -192,7 +193,7 @@ $(document).ready(function() {
         $.ajax({
             url: url,
             type: 'PUT',
-        });
+        }).then(window.location = "/oer")
     });
 
 });

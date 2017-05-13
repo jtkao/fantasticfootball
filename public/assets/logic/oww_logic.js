@@ -22,7 +22,7 @@ $(document).ready(function() {
     $("#submit_sort").on("click", function() {
         var sortTeam = $("#sortby_team").val();
         var sortPosition = $("#sortby_position").val();
-        var sortOrder = $("#sortby_position").val();
+        var sortOrder = $("#sortby_order").val();
 
         var sorted = {
             "team": sortTeam,
